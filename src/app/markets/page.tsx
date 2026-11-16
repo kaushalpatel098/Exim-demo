@@ -1,24 +1,18 @@
 import type { Metadata } from 'next';
 import CountryCard from '@/components/CountryCard';
 import PageHero from '@/components/PageHero';
-
-export const metadata: Metadata = {
-  title: 'Markets We Serve',
-  description: 'Fast Scaling Trade ships premium Indian products to Tanzania, Kenya, Nigeria, UAE, UK, China, and more. Flexible FOB, CIF, DDP shipping and TT, LC payment terms.',
-};
 import FadeIn from '@/components/FadeIn';
 import SectionHeader from '@/components/SectionHeader';
 import { Ship, CreditCard } from 'lucide-react';
+import siteConfig from '@site-config';
 
-const countries = [
-  { name: 'Tanzania', flag: '\u{1F1F9}\u{1F1FF}', score: 9, maxScore: 10, competition: 'LOW', population: '65M (growing 3%/yr)', port: 'Dar es Salaam', topProducts: 'Jaggery, Textiles, Leather, FMCG' },
-  { name: 'Kenya', flag: '\u{1F1F0}\u{1F1EA}', score: 8, maxScore: 10, competition: 'MODERATE', population: '56M', port: 'Mombasa', topProducts: 'Textiles, Pharmaceuticals, Rice' },
-  { name: 'Zambia', flag: '\u{1F1FF}\u{1F1F2}', score: 8, maxScore: 10, competition: 'LOW', population: '20M', port: 'Via Dar es Salaam', topProducts: 'Jaggery, Textiles, Shoes, FMCG' },
-  { name: 'Nigeria', flag: '\u{1F1F3}\u{1F1EC}', score: 7, maxScore: 10, competition: 'MODERATE', population: '230M', port: 'Lagos', topProducts: 'Pharmaceuticals, Rice, Chemicals' },
-  { name: 'UAE', flag: '\u{1F1E6}\u{1F1EA}', score: 7, maxScore: 10, competition: 'HIGH', population: '10M (high purchasing)', port: 'Jebel Ali', topProducts: 'Carpets, Handicrafts, Spices, Tea' },
-  { name: 'United Kingdom', flag: '\u{1F1EC}\u{1F1E7}', score: 6, maxScore: 10, competition: 'HIGH', population: '68M', port: 'Felixstowe', topProducts: 'Carpets, Handicrafts, Textiles, Tea' },
-  { name: 'China', flag: '\u{1F1E8}\u{1F1F3}', score: 6, maxScore: 10, competition: 'VARIES', population: '1.4B', port: 'Shanghai', topProducts: 'Rice, Spices, Leather, Pharmaceuticals' },
-];
+export const metadata: Metadata = {
+  title: 'Markets We Serve',
+  description: `${siteConfig.companyName} ships premium Indian products to Tanzania, Kenya, Nigeria, UAE, UK, China, and more. Flexible FOB, CIF, DDP shipping and TT, LC payment terms.`,
+  alternates: { canonical: '/markets' },
+};
+
+const countries = siteConfig.markets;
 
 const whyAfrica = [
   { stat: '54', label: 'Countries in AfCFTA', desc: 'The African Continental Free Trade Agreement is creating a single connected market' },
@@ -53,14 +47,14 @@ export default function MarketsPage() {
 
       {/* Africa Opportunity */}
       <section className="py-24 bg-brand-50/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="site-container">
           <SectionHeader
             eyebrow="Growing Markets"
             headline="India-Africa Trade"
             subheadline="Africa is one of the fastest-growing import markets in the world, and Indian products are in high demand across the continent."
             align="left"
           />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 xl:gap-6">
             {whyAfrica.map((w, i) => (
               <FadeIn key={w.label} delay={i * 0.1}>
                 <div className="bg-white rounded-2xl p-6 md:p-7 border border-brand-100 card-hover">
@@ -76,13 +70,13 @@ export default function MarketsPage() {
 
       {/* Country Cards */}
       <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="site-container">
           <SectionHeader
             eyebrow="Active Markets"
             headline="Countries We Trade With"
             subheadline="We have established trade relationships and shipping routes to these markets, with more being added regularly."
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 xl:gap-6">
             {countries.map((c, i) => (
               <FadeIn key={c.name} delay={i * 0.07}>
                 <CountryCard {...c} />
@@ -94,13 +88,13 @@ export default function MarketsPage() {
 
       {/* Trade Terms */}
       <section className="py-24 bg-brand-50/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="site-container">
           <SectionHeader
             eyebrow="Flexible Terms"
             headline="Trade Terms We Support"
             subheadline="We offer flexible shipping and payment terms to accommodate buyers across different markets and experience levels."
           />
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 xl:gap-10">
             <FadeIn direction="left">
               <div>
                 <div className="flex items-center gap-2.5 mb-6">

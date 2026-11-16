@@ -3,16 +3,18 @@ import ContactForm from '@/components/ContactForm';
 import PageHero from '@/components/PageHero';
 import FadeIn from '@/components/FadeIn';
 import { Mail, Package, MapPin, Clock, CheckCircle2, Shield } from 'lucide-react';
+import siteConfig from '@site-config';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Get a customized export quotation within 24 hours. Contact Fast Scaling Trade for product sourcing, pricing, samples, and shipping from India.',
+  description: `Get a customized export quotation within 24 hours. Contact ${siteConfig.companyName} for product sourcing, pricing, samples, and shipping from India.`,
+  alternates: { canonical: '/contact' },
 };
 
 const contactInfo = [
-  { icon: Mail, label: 'General Inquiries', value: 'info@fastscalingai.com', link: 'mailto:info@fastscalingai.com' },
-  { icon: Package, label: 'Export & Sales', value: 'exports@fastscalingai.com', link: 'mailto:exports@fastscalingai.com' },
-  { icon: MapPin, label: 'Office', value: 'Delhi, India', link: null },
+  { icon: Mail, label: 'General Inquiries', value: siteConfig.emails.general, link: `mailto:${siteConfig.emails.general}` },
+  { icon: Package, label: 'Export & Sales', value: siteConfig.emails.exports, link: `mailto:${siteConfig.emails.exports}` },
+  { icon: MapPin, label: 'Office', value: siteConfig.location, link: null },
   { icon: Clock, label: 'Response Time', value: 'Within 24 hours', link: null },
 ];
 
@@ -25,13 +27,7 @@ const benefits = [
   'No minimum order for samples',
 ];
 
-const certifications = [
-  'IEC Registered Exporter',
-  'GST Registered',
-  'RCMC (Export Promotion Council)',
-  'FIEO Member',
-  'AD Code Registered',
-];
+const certifications = siteConfig.certifications;
 
 export default function ContactPage() {
   return (
@@ -44,8 +40,8 @@ export default function ContactPage() {
       />
 
       <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-12">
+        <div className="site-container">
+          <div className="grid lg:grid-cols-3 gap-12 xl:gap-16">
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <FadeIn>

@@ -12,6 +12,12 @@ html { scroll-behavior: smooth; }
   h1, h2, h3 { @apply tracking-tight; }
 }
 
+@layer components {
+  .site-container {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 2xl:max-w-[90rem];
+  }
+}
+
 @layer utilities {
   .tabular-nums { font-variant-numeric: tabular-nums; }
 

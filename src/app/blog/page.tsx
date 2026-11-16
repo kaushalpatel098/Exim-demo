@@ -4,50 +4,15 @@ import PageHero from '@/components/PageHero';
 import FadeIn from '@/components/FadeIn';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import siteConfig from '@site-config';
 
 export const metadata: Metadata = {
   title: 'Resources & Insights',
   description: 'Practical guides on sourcing from India — pricing, shipping, quality standards, payment security, and product spotlights for international buyers.',
+  alternates: { canonical: '/blog' },
 };
 
-const articles = [
-  {
-    title: 'Why Source Products from India? A Buyer\'s Guide',
-    excerpt: 'India is the world\'s largest producer of spices, jute, and tea, and a top-5 exporter of textiles, leather, and pharmaceuticals. Here\'s why global buyers increasingly turn to Indian suppliers.',
-    category: 'Buyer Guide',
-    image: '/images/blog/india-guide.jpg',
-  },
-  {
-    title: 'Understanding Indian Export Pricing: FOB, CIF & DDP Explained',
-    excerpt: 'What\'s included in the price you\'re quoted? A clear breakdown of Incoterms, what each pricing model covers, and which one works best for your shipment.',
-    category: 'Trade Terms',
-    image: '/images/heroes/home-hero.jpg',
-  },
-  {
-    title: 'Quality Standards of Indian Export Products',
-    excerpt: 'From FSSAI certification for food products to BIS standards for industrial goods — understand the quality benchmarks Indian exporters follow and what to look for.',
-    category: 'Quality',
-    image: '/images/products/spices.jpg',
-  },
-  {
-    title: 'Shipping from India: Ports, Routes, Costs & Transit Times',
-    excerpt: 'A practical guide to shipping from major Indian ports (JNPT, Mundra, Chennai) to Africa, Middle East, and beyond. FCL vs LCL, freight costs, and how to avoid delays.',
-    category: 'Logistics',
-    image: '/images/heroes/home-cta.jpg',
-  },
-  {
-    title: 'India\'s Spice Exports: Varieties, Grades & Global Demand',
-    excerpt: 'India produces 75% of the world\'s spices. Explore the most in-demand varieties, quality grades, packaging standards, and how to place your first bulk order.',
-    category: 'Product Spotlight',
-    image: '/images/blog/spice-exports.jpg',
-  },
-  {
-    title: 'Payment Security in International Trade: A Buyer\'s Perspective',
-    excerpt: 'TT, Letter of Credit, D/P — which payment method offers the best protection for your money? A straightforward guide for first-time importers.',
-    category: 'Trade Terms',
-    image: '/images/blog/payment-security.jpg',
-  },
-];
+const articles = siteConfig.articles;
 
 const categoryColors: Record<string, string> = {
   'Buyer Guide': 'bg-sky-50 text-sky-700 border-sky-200',
@@ -68,8 +33,8 @@ export default function BlogPage() {
       />
 
       <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="site-container">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 xl:gap-6">
             {articles.map((a, i) => (
               <FadeIn key={a.title} delay={i * 0.07}>
                 <article className="bg-white rounded-2xl border border-brand-100 overflow-hidden card-hover flex flex-col h-full group">
@@ -78,6 +43,7 @@ export default function BlogPage() {
                       src={a.image}
                       alt={a.title}
                       fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-700"
                       unoptimized
                     />

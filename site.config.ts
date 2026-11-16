@@ -1,10 +1,10 @@
 /**
  * SITE CONFIGURATION
  * ==================
- * Edit this file to customize the entire website for your business.
- * All business-specific content is centralized here for easy updates.
+ * Single source of truth for all business-specific content.
+ * Imported by pages and components via the `@site-config` alias.
  *
- * After editing, run: npm run build && npx wrangler pages deploy out --project-name YOUR_PROJECT
+ * After editing, run: npm run build
  */
 
 const siteConfig = {
@@ -14,16 +14,40 @@ const siteConfig = {
   domain: 'https://fastscalingai.com',
   foundedYear: '2024',
   location: 'Delhi, India',
+  address: {
+    city: 'Delhi',
+    country: 'IN',
+  },
   description:
     'Fast Scaling Trade is a trusted Indian export partner specializing in jaggery, textiles, leather, carpets, handicrafts, spices, and more. Serving Africa, Middle East, UK, and Asia.',
+
+  // ─── Navigation ─────────────────────────────────────────
+  nav: [
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: '/products', label: 'Products' },
+    { href: '/markets', label: 'Markets' },
+    { href: '/blog', label: 'Resources' },
+    { href: '/contact', label: 'Contact' },
+  ],
 
   // ─── Contact ────────────────────────────────────────────
   emails: {
     general: 'info@fastscalingai.com',
     exports: 'exports@fastscalingai.com',
   },
-  whatsapp: '91XXXXXXXXXX', // Replace with actual WhatsApp Business number (with country code, no +)
+  // WhatsApp Business number with country code, no "+" (e.g. 919876543210).
+  // Leave empty or keep the placeholder to hide the floating button.
+  whatsapp: '91XXXXXXXXXX',
+
+  // Public Web3Forms access key (used by the client-side contact form).
+  // Override at build time with NEXT_PUBLIC_WEB3FORMS_KEY.
   web3formsKey: '369b3cb9-af19-4377-aa93-f56ffc9d43ff', // Get yours free at https://web3forms.com
+
+  // ─── Social ─────────────────────────────────────────────
+  social: {
+    linkedin: 'https://www.linkedin.com/company/fast-scaling-trade',
+  },
 
   // ─── SEO & Social ───────────────────────────────────────
   seo: {
@@ -80,135 +104,146 @@ const siteConfig = {
   products: [
     {
       name: 'Jaggery',
+      shortName: 'Jaggery',
       hsCode: '1701',
-      margin: '35-45%',
       indiaRank: 'Top 3',
       description:
         'Organic jaggery blocks, powder, and liquid jaggery. Made from pure sugarcane without chemicals. Popular natural sweetener in African and Middle Eastern markets.',
+      shortDescription: 'Organic blocks & powder',
       moq: '1 MT',
       packaging: '25kg bags',
       image: '/images/products/jaggery.jpg',
-      shortDesc: 'Organic blocks & powder',
+      featured: true,
     },
     {
       name: 'Textiles & Garments',
+      shortName: 'Textiles',
       hsCode: '52-63',
-      margin: '25-40%',
       indiaRank: 'Top 5',
       description:
         "Cotton fabrics, readymade garments, bed linen, towels, and industrial textiles. India is one of the world's largest textile producers.",
+      shortDescription: 'Cotton fabrics & garments',
       moq: '500 pcs',
       packaging: 'Poly bags',
       image: '/images/products/textiles.jpg',
-      shortDesc: 'Cotton fabrics & garments',
+      featured: true,
     },
     {
       name: 'Leather Goods',
+      shortName: 'Leather',
       hsCode: '4101-4115',
-      margin: '30-50%',
       indiaRank: 'Top 5',
       description:
         'Finished leather, leather bags, belts, wallets, and accessories. Premium quality from Indian tanneries with eco-friendly processing.',
+      shortDescription: 'Premium leather goods',
       moq: '200 pcs',
       packaging: 'Ind. boxes',
       image: '/images/products/leather.jpg',
-      shortDesc: 'Premium leather goods',
+      featured: true,
     },
     {
       name: 'Carpets & Rugs',
+      shortName: 'Carpets',
       hsCode: '5701-5705',
-      margin: '40-60%',
       indiaRank: 'Top 3',
       description:
         "Handwoven carpets, tufted rugs, and machine-made floor coverings. India's carpet heritage spans centuries with exceptional craftsmanship.",
+      shortDescription: 'Handwoven carpets & rugs',
       moq: '50 pcs',
       packaging: 'Rolled',
       image: '/images/products/carpets.jpg',
-      shortDesc: 'Handwoven carpets & rugs',
+      featured: true,
     },
     {
       name: 'Handicrafts',
+      shortName: 'Handicrafts',
       hsCode: '4420, 6913',
-      margin: '50-70%',
       indiaRank: 'Top 3',
       description:
         'Artisan-crafted home decor, wooden products, brass items, pottery, and decorative pieces. Unique, handmade products with high perceived value.',
+      shortDescription: 'Artisan crafted products',
       moq: '100 pcs',
       packaging: 'Custom',
       image: '/images/products/handicrafts.jpg',
-      shortDesc: 'Artisan crafted products',
+      featured: true,
     },
     {
       name: 'Jute Products',
+      shortName: 'Jute',
       hsCode: '5303-5310',
-      margin: '20-35%',
       indiaRank: '#1 Global',
       description:
         "Jute bags, sacks, twine, and eco-friendly packaging solutions. India is the world's #1 jute producer. Growing demand for sustainable packaging.",
+      shortDescription: 'Eco-friendly jute bags & sacks',
       moq: '5000 pcs',
       packaging: 'Bales',
       image: '/images/products/jute.jpg',
-      shortDesc: 'Eco-friendly jute bags & sacks',
+      featured: false,
     },
     {
       name: 'Shoes & Footwear',
+      shortName: 'Footwear',
       hsCode: '6401-6405',
-      margin: '30-45%',
       indiaRank: 'Top 10',
       description:
         'Leather shoes, sports footwear, sandals, and industrial safety shoes. Competitive pricing with good quality from Indian manufacturers.',
+      shortDescription: 'Leather & sports footwear',
       moq: '300 pairs',
       packaging: 'Cartons',
       image: '/images/products/shoes.jpg',
-      shortDesc: 'Leather & sports footwear',
+      featured: false,
     },
     {
       name: 'Spices',
+      shortName: 'Spices',
       hsCode: '0904-0910',
-      margin: '40-60%',
       indiaRank: '#1 Global',
       description:
         "Turmeric, cumin, coriander, chili, black pepper, cardamom, and spice blends. India is the world's largest spice producer and exporter.",
+      shortDescription: 'Premium Indian spices',
       moq: '500 kg',
       packaging: '25kg bags',
       image: '/images/products/spices.jpg',
-      shortDesc: 'Premium Indian spices',
+      featured: true,
     },
     {
       name: 'Rice',
+      shortName: 'Rice',
       hsCode: '1006',
-      margin: '15-30%',
       indiaRank: '#1 Global',
       description:
         "Basmati rice, non-basmati rice, parboiled rice, and broken rice. India is the world's largest rice exporter with diverse varieties.",
+      shortDescription: 'Basmati & non-basmati rice',
       moq: '20 MT',
       packaging: '50kg bags',
       image: '/images/products/rice.jpg',
-      shortDesc: 'Basmati & non-basmati rice',
+      featured: false,
     },
     {
       name: 'Tea',
+      shortName: 'Tea',
       hsCode: '0902',
-      margin: '25-40%',
       indiaRank: '#2 Global',
       description:
         'Assam tea, Darjeeling tea, Nilgiri tea, CTC and orthodox varieties. Iconic Indian teas with global brand recognition.',
+      shortDescription: 'Assam, Darjeeling & Nilgiri',
       moq: '1 MT',
       packaging: '25kg chests',
       image: '/images/products/tea.jpg',
-      shortDesc: 'Assam, Darjeeling & Nilgiri',
+      featured: false,
     },
     {
       name: 'Pharmaceuticals',
+      shortName: 'Pharma',
       hsCode: '3003-3004',
-      margin: '40-65%',
       indiaRank: 'Top 3',
       description:
         'Generic medicines, API (Active Pharmaceutical Ingredients), and medical supplies. India is the "Pharmacy of the World."',
+      shortDescription: 'Generic medicines & API',
       moq: 'Varies',
       packaging: 'Pharma',
       image: '/images/products/pharma.jpg',
-      shortDesc: 'Generic medicines & API',
+      featured: false,
     },
   ],
 
@@ -229,7 +264,7 @@ const siteConfig = {
       'Fast Scaling Trade is an export trading company based in Delhi, India. We help international buyers source high-quality Indian products — from food and spices to textiles, leather goods, and handicrafts.',
       "India is the world's largest producer of spices, jute, and tea, and a leading manufacturer of textiles, leather, pharmaceuticals, and handicrafts. We give you direct access to this manufacturing base with guaranteed quality and competitive pricing.",
       'Our team has hands-on trade experience across 11+ product categories and has shipped to buyers in Tanzania, Zambia, Kenya, DRC, Nigeria, UAE, UK, China, and Australia.',
-      "Whether you need a single sample or a full container load, we handle sourcing, quality inspection, documentation, and shipping — so you receive exactly what you ordered, on time.",
+      'Whether you need a single sample or a full container load, we handle sourcing, quality inspection, documentation, and shipping — so you receive exactly what you ordered, on time.',
     ],
     milestones: [
       { year: '2024', event: 'Fast Scaling Trade founded in Delhi, India' },

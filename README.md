@@ -8,43 +8,62 @@ A premium, production-ready website template for export/trading businesses. Buil
 
 - Premium design with scroll animations (Framer Motion)
 - Fully responsive (mobile, tablet, desktop)
-- Static export — deploys anywhere (Cloudflare Pages, Vercel, Netlify)
-- SEO optimized (Open Graph, Twitter Cards, sitemap, robots.txt)
+- Static export — deploys anywhere (Netlify, Cloudflare Pages, Vercel)
+- SEO optimized (generated sitemap + robots, canonical URLs, Open Graph, Twitter Cards, JSON-LD)
 - Contact form via Web3Forms (free, no backend needed)
 - WhatsApp floating button
-- 6 pages: Home, About, Products, Markets, Blog/Resources, Contact
+- 6 pages plus a privacy policy: Home, About, Products, Markets, Blog/Resources, Contact
 
 ## Quick Start
 
 ```bash
-# 1. Clone the repo
-git clone https://github.com/rohit96/export-website-template.git
-cd export-website-template
-
-# 2. Install dependencies
 npm install
-
-# 3. Run dev server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the site.
+Open [http://localhost:3000](http://localhost:3000).
+
+```bash
+npm run build      # static site in out/
+npm run typecheck  # tsc --noEmit
+npx serve out      # preview the production build
+```
+
+> Stop `npm run dev` before running `npm run build`. Both use `.next/`, and building while
+> dev is running leaves the dev server serving pages without CSS. If that happens, stop dev,
+> delete `.next/`, and start dev again.
 
 ## Customize for Your Business
 
-All business-specific content is in **`site.config.ts`**. Update these fields:
+All business content lives in **`site.config.ts`** and is imported through the `@site-config` alias:
 
 | Field | What to change |
 |-------|---------------|
-| `companyName` | Your company name |
-| `domain` | Your domain (e.g. `https://yourdomain.com`) |
-| `emails` | Your business email addresses |
-| `whatsapp` | Your WhatsApp number with country code |
+| `companyName`, `tagline`, `domain` | Brand identity and canonical domain |
+| `location`, `address` | Display address and JSON-LD postal address |
+| `nav` | Navigation links (also used by the sitemap) |
+| `emails`, `whatsapp` | Contact details (`whatsapp` uses digits with country code, no `+`) |
 | `web3formsKey` | Your free key from [web3forms.com](https://web3forms.com) |
-| `products` | Your product catalog |
-| `markets` | Countries you serve |
-| `about` | Your company story & milestones |
-| `hero` | Homepage headline & description |
+| `social` | Optional social profiles for JSON-LD `sameAs` |
+| `seo`, `hero` | Metadata, social image, homepage hero |
+| `stats`, `certifications`, `trustSignals` | Credibility sections |
+| `products` | Product catalog (`shortDescription` and `featured` drive the homepage) |
+| `markets` | Countries served |
+| `about`, `articles` | Company story, milestones, and resource cards |
+| `footerProducts`, `footerMarkets` | Footer quick links |
+| `contactCountries`, `contactProducts` | Contact form dropdowns |
+
+Page-specific copy (process steps, benefits, trade terms, section headings) lives in the page files under `src/app/`.
+
+### Environment variables
+
+Copy `.env.example` to `.env.local` for development, or set these in your host's build settings:
+
+- `NEXT_PUBLIC_WHATSAPP_NUMBER` — overrides `siteConfig.whatsapp`
+- `NEXT_PUBLIC_WEB3FORMS_KEY` — rotate the public form key without editing source
+- `NEXT_PUBLIC_GA_ID` — optional Google Analytics 4; leave empty to disable analytics
+
+`NEXT_PUBLIC_*` values are inlined at build time, so rebuild after changing them. The WhatsApp button stays hidden while the number is empty or still contains the `91XXXXXXXXXX` placeholder.
 
 ### Replace Images
 
@@ -58,26 +77,28 @@ Images are in `public/images/`:
 
 ### Update SEO
 
-1. Edit `site.config.ts` → `seo` section
-2. Update `public/sitemap.xml` with your domain
-3. Update `public/robots.txt` with your sitemap URL
-4. Replace `src/app/layout.tsx` metadata with your domain
+1. Edit `site.config.ts` → `seo` section and `domain`
+2. Update `src/app/layout.tsx` metadata only if you need fields not covered by the config
+3. `sitemap.xml` and `robots.txt` are generated from `src/app/sitemap.ts` and `src/app/robots.ts` — do not add them to `public/`
+
+## Deploy to Netlify
+
+```bash
+npm run build
+npx netlify deploy --prod --dir=out
+```
+
+Or connect the repository and set the publish directory to `out` with build command `npm run build`. Security and cache headers are defined in `public/_headers`, which Netlify copies to the publish root.
 
 ## Deploy to Cloudflare Pages
 
 ```bash
-# Build the static site
 npm run build
-
-# Deploy (first time — creates project)
 npx wrangler pages project create your-project-name --production-branch main
 npx wrangler pages deploy out --project-name your-project-name
-
-# Subsequent deploys
-npm run build && npx wrangler pages deploy out --project-name your-project-name
 ```
 
-Then add your custom domain in Cloudflare Pages dashboard → Custom domains.
+Subsequent deploys: `npm run build && npx wrangler pages deploy out --project-name your-project-name`. Cloudflare Pages also reads `_headers` from the publish root.
 
 ## Deploy to Vercel
 
@@ -85,7 +106,9 @@ Then add your custom domain in Cloudflare Pages dashboard → Custom domains.
 npx vercel
 ```
 
-Or connect your GitHub repo at [vercel.com](https://vercel.com).
+## Contact Form
+
+The form posts directly to Web3Forms from the browser; there is no backend in this template. `src/app/api/contact/route.ts` is a Resend prototype that is **not deployed** while `output: 'export'` is enabled. For a production backend on Netlify, implement it as a Netlify Function and keep the Resend API key in Netlify's environment settings.
 
 ## Tech Stack
 
@@ -102,11 +125,8 @@ Or connect your GitHub repo at [vercel.com](https://vercel.com).
 ```
 ├── public/
 │   ├── images/          # All site images
-│   ├── logo.png         # Company logo
-│   ├── favicon.ico      # Browser icon
-│   ├── og-image.jpg     # Social sharing image
-│   ├── sitemap.xml      # SEO sitemap
-│   └── robots.txt       # Search engine directives
+│   ├── _headers         # Security + cache headers (Netlify / Cloudflare Pages)
+│   └── ...              # Icons, logo, manifest, social image
 ├── src/
 │   ├── app/
 │   │   ├── page.tsx         # Homepage
@@ -115,18 +135,13 @@ Or connect your GitHub repo at [vercel.com](https://vercel.com).
 │   │   ├── markets/         # Markets served
 │   │   ├── blog/            # Resources/blog
 │   │   ├── contact/         # Contact page
+│   │   ├── privacy/         # Privacy policy
+│   │   ├── sitemap.ts       # Generated sitemap.xml
+│   │   ├── robots.ts        # Generated robots.txt
 │   │   ├── layout.tsx       # Root layout + SEO
 │   │   └── globals.css      # Global styles
-│   └── components/
-│       ├── Navbar.tsx       # Navigation bar
-│       ├── Footer.tsx       # Site footer
-│       ├── ContactForm.tsx  # Contact form
-│       ├── ProductCard.tsx  # Product display card
-│       ├── CountryCard.tsx  # Market display card
-│       ├── PageHero.tsx     # Page hero banner
-│       ├── FadeIn.tsx       # Scroll animation wrapper
-│       └── SectionHeader.tsx # Section title component
-├── site.config.ts       # ← All business content here
+│   └── components/          # Navbar, Footer, ContactForm, cards, animation wrappers
+├── site.config.ts       # ← Single source of truth for business content
 ├── tailwind.config.js   # Theme colors & design tokens
 └── next.config.js       # Next.js config (static export)
 ```

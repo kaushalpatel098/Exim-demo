@@ -5,29 +5,26 @@ import { ArrowRight } from 'lucide-react';
 interface ProductCardProps {
   name: string;
   hsCode: string;
-  margin: string;
   indiaRank: string;
   description: string;
   moq: string;
   packaging: string;
-  imageSrc: string;
+  image: string;
 }
 
-export default function ProductCard({ name, hsCode, margin, indiaRank, description, moq, packaging, imageSrc }: ProductCardProps) {
+export default function ProductCard({ name, hsCode, indiaRank, description, moq, packaging, image }: ProductCardProps) {
   return (
     <div className="group bg-white rounded-2xl border border-brand-100 overflow-hidden card-hover flex flex-col">
       {/* Image */}
       <div className="relative h-48 overflow-hidden">
         <Image
-          src={imageSrc}
+          src={image}
           alt={name}
           fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
           className="object-cover group-hover:scale-105 transition-transform duration-700"
           unoptimized
         />
-        <div className="absolute top-3 right-3 bg-brand-900/80 backdrop-blur-sm text-accent-400 text-[11px] font-bold px-3 py-1.5 rounded-full">
-          {margin} Margin
-        </div>
         <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/50 to-transparent h-20" />
       </div>
 

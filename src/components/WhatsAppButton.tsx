@@ -1,8 +1,18 @@
 'use client';
+import { useState, useEffect } from 'react';
+import siteConfig from '@site-config';
 
 export default function WhatsAppButton() {
-  const phone = '91XXXXXXXXXX'; // Replace with actual WhatsApp Business number
-  const message = encodeURIComponent('Hi, I found Fast Scaling Trade online and I am interested in your export products. Can you share more details?');
+  const configured = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || siteConfig.whatsapp;
+  const phone = configured.replace(/\D/g, '');
+  // Hide the CTA until a real number is configured (placeholders contain "X").
+  const isValid = /X/i.test(configured) === false && phone.length >= 8;
+
+  if (!isValid) return null;
+
+  const message = encodeURIComponent(
+    `Hi, I found ${siteConfig.companyName} online and I am interested in your export products. Can you share more details?`,
+  );
 
   return (
     <a

@@ -4,15 +4,9 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
+import siteConfig from '@site-config';
 
-const links = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/products', label: 'Products' },
-  { href: '/markets', label: 'Markets' },
-  { href: '/blog', label: 'Resources' },
-  { href: '/contact', label: 'Contact' },
-];
+const links = siteConfig.nav;
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -36,11 +30,11 @@ export default function Navbar() {
           : 'bg-white/80 backdrop-blur-2xl shadow-[0_1px_0_rgba(0,0,0,0.04)] border-b border-brand-200/50'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[72px]">
+      <nav className="site-container flex items-center justify-between h-[72px]">
         <Link href="/" className="flex-shrink-0">
           <Image
             src="/logo.png"
-            alt="Fast Scaling Trade"
+            alt={siteConfig.companyName}
             width={796}
             height={344}
             className={`h-10 w-auto transition-all duration-300 ${

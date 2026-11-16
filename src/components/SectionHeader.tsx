@@ -11,7 +11,7 @@ export default function SectionHeader({ eyebrow, headline, subheadline, align = 
   const alignClass = align === 'center' ? 'text-center mx-auto' : '';
 
   return (
-    <div className={`max-w-3xl mb-14 ${alignClass}`}>
+    <div className={`max-w-3xl 2xl:max-w-4xl mb-14 ${alignClass}`}>
       {eyebrow && (
         <FadeIn>
           <span className="text-accent-600 text-xs font-semibold uppercase tracking-[0.2em]">{eyebrow}</span>

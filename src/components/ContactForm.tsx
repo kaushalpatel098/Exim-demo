@@ -1,28 +1,13 @@
 'use client';
 import { useState } from 'react';
 import { Send, CheckCircle, AlertCircle, Loader2, Mail } from 'lucide-react';
+import siteConfig from '@site-config';
 
-const WEB3FORMS_KEY = '369b3cb9-af19-4377-aa93-f56ffc9d43ff';
+// Public Web3Forms key. Rotate without a code change via NEXT_PUBLIC_WEB3FORMS_KEY.
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || siteConfig.web3formsKey;
 
-const countries = [
-  'Tanzania', 'Kenya', 'Nigeria', 'South Africa', 'Ghana', 'Ethiopia', 'Uganda',
-  'DRC (Congo)', 'Mozambique', 'Rwanda', 'Senegal', 'Cameroon', 'Ivory Coast',
-  'Angola', 'Zimbabwe', 'Botswana',
-  'UAE', 'Saudi Arabia', 'Oman', 'Qatar', 'Kuwait', 'Bahrain', 'Iraq', 'Jordan',
-  'China', 'Japan', 'South Korea', 'Singapore', 'Malaysia', 'Thailand',
-  'Vietnam', 'Indonesia', 'Philippines', 'Bangladesh', 'Sri Lanka', 'Myanmar', 'Nepal',
-  'United Kingdom', 'Germany', 'France', 'Netherlands', 'Italy', 'Spain',
-  'Belgium', 'Poland', 'Sweden', 'Switzerland',
-  'United States', 'Canada', 'Brazil', 'Mexico', 'Colombia', 'Chile',
-  'Australia', 'New Zealand',
-  'Other',
-];
-
-const products = [
-  'Jaggery & Sugar Products', 'Textiles & Garments', 'Leather Goods',
-  'Carpets & Rugs', 'Handicrafts & Home Decor', 'Spices', 'Rice',
-  'Shoes & Footwear', 'Jute Products', 'Tea', 'Pharmaceuticals', 'Other',
-];
+const countries = siteConfig.contactCountries;
+const products = siteConfig.contactProducts;
 
 export default function ContactForm() {
   const [form, setForm] = useState({ name: '', email: '', company: '', country: '', product: '', message: '' });
@@ -37,8 +22,8 @@ export default function ContactForm() {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          subject: `[Fast Scaling Trade] Export Inquiry: ${form.product || 'General'} from ${form.name}`,
-          from_name: 'Fast Scaling Trade Website',
+          subject: `[${siteConfig.companyName}] Export Inquiry: ${form.product || 'General'} from ${form.name}`,
+          from_name: `${siteConfig.companyName} Website`,
           name: form.name, email: form.email,
           company: form.company || 'Not provided',
           country: form.country || 'Not selected',
@@ -89,12 +74,12 @@ export default function ContactForm() {
       {status === 'error' && (
         <div className="flex items-center gap-3 bg-rose-50 text-rose-600 p-4 rounded-xl border border-rose-200">
           <AlertCircle className="w-5 h-5 flex-shrink-0" />
-          <span className="text-sm font-medium">Failed to send. Please email us directly at exports@fastscalingai.com</span>
+          <span className="text-sm font-medium">Failed to send. Please email us directly at {siteConfig.emails.exports}</span>
         </div>
       )}
       <div className="flex items-center gap-2 text-xs text-brand-400 pt-1">
         <Mail className="w-3.5 h-3.5" />
-        <span>Or email us directly at <a href="mailto:exports@fastscalingai.com" className="text-accent-600 hover:underline">exports@fastscalingai.com</a></span>
+        <span>Or email us directly at <a href={`mailto:${siteConfig.emails.exports}`} className="text-accent-600 hover:underline">{siteConfig.emails.exports}</a></span>
       </div>
     </form>
   );
