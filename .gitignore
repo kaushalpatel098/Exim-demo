@@ -10,6 +10,7 @@ out/
 .env.local
 .env.production
 .env.development
+.env.example
 
 # OS
 .DS_Store
@@ -30,3 +31,4 @@ next-env.d.ts
 
 # Misc
 *.pem
+*.kilo
