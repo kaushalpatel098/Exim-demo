@@ -5,6 +5,7 @@ import FadeIn from '@/components/FadeIn';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import siteConfig from '@site-config';
+import { getAssetPath } from '@/lib/asset-path';
 
 export const metadata: Metadata = {
   title: 'Export Products',
@@ -20,7 +21,7 @@ export default function ProductsPage() {
       <PageHero
         title="Our Export Products"
         subtitle="Premium Indian products sourced from verified manufacturers. Competitive pricing, quality assured, and ready to ship worldwide."
-        imageSrc="/images/heroes/products.jpg"
+        imageSrc={getAssetPath('/images/heroes/products.jpg')}
         imageAlt="Product warehouse"
       />
 

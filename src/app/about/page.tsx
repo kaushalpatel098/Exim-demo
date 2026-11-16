@@ -5,6 +5,7 @@ import FadeIn from '@/components/FadeIn';
 import SectionHeader from '@/components/SectionHeader';
 import { Handshake, ShieldCheck, Globe, Truck } from 'lucide-react';
 import siteConfig from '@site-config';
+import { getAssetPath } from '@/lib/asset-path';
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -27,7 +28,7 @@ export default function AboutPage() {
       <PageHero
         title={`About ${siteConfig.companyName}`}
         subtitle="Your reliable sourcing partner for premium Indian products. We connect international buyers with verified Indian manufacturers."
-        imageSrc="/images/heroes/about.jpg"
+        imageSrc={getAssetPath('/images/heroes/about.jpg')}
         imageAlt="International business partnership"
       />
 

@@ -4,6 +4,7 @@ import PageHero from '@/components/PageHero';
 import FadeIn from '@/components/FadeIn';
 import { Mail, Package, MapPin, Clock, CheckCircle2, Shield } from 'lucide-react';
 import siteConfig from '@site-config';
+import { getAssetPath } from '@/lib/asset-path';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -35,7 +36,7 @@ export default function ContactPage() {
       <PageHero
         title="Get in Touch"
         subtitle="Get a customized quotation within 24 hours. Tell us what you need, and we will find the best sourcing solution for you."
-        imageSrc="/images/heroes/contact.jpg"
+        imageSrc={getAssetPath('/images/heroes/contact.jpg')}
         imageAlt="Modern office"
       />
 

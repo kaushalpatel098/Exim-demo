@@ -5,6 +5,7 @@ import FadeIn from '@/components/FadeIn';
 import SectionHeader from '@/components/SectionHeader';
 import { ChevronDown, Shield, Award, CheckCircle, FileText, Package, Truck, MessageSquare, ArrowRight, Globe, Clock, Calendar } from 'lucide-react';
 import siteConfig from '@site-config';
+import { getAssetPath } from '@/lib/asset-path';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -37,7 +38,7 @@ export default function Home() {
       {/* Hero — dramatic full-bleed */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <Image
-          src="/images/heroes/home-hero.jpg"
+          src={getAssetPath('/images/heroes/home-hero.jpg')}
           alt="International shipping port with containers"
           fill
           priority

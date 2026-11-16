@@ -5,6 +5,7 @@ import FadeIn from '@/components/FadeIn';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import siteConfig from '@site-config';
+import { getAssetPath } from '@/lib/asset-path';
 
 export const metadata: Metadata = {
   title: 'Resources & Insights',
@@ -28,7 +29,7 @@ export default function BlogPage() {
       <PageHero
         title="Resources & Insights"
         subtitle="Practical guides, product knowledge, and trade information to help international buyers make informed sourcing decisions."
-        imageSrc="/images/heroes/blog.jpg"
+        imageSrc={getAssetPath('/images/heroes/blog.jpg')}
         imageAlt="Market research and data analysis"
       />
 

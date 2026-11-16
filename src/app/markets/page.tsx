@@ -5,6 +5,7 @@ import FadeIn from '@/components/FadeIn';
 import SectionHeader from '@/components/SectionHeader';
 import { Ship, CreditCard } from 'lucide-react';
 import siteConfig from '@site-config';
+import { getAssetPath } from '@/lib/asset-path';
 
 export const metadata: Metadata = {
   title: 'Markets We Serve',
@@ -41,7 +42,7 @@ export default function MarketsPage() {
       <PageHero
         title="Markets We Serve"
         subtitle="We ship premium Indian products to buyers across Africa, the Middle East, Europe, and Asia. Wherever you are, we deliver."
-        imageSrc="/images/heroes/markets.jpg"
+        imageSrc={getAssetPath('/images/heroes/markets.jpg')}
         imageAlt="Global trade routes and world map"
       />
 
