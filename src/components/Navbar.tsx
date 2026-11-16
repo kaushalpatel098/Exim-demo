@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import siteConfig from '@site-config';
+import { getAssetPath } from '@/lib/asset-path';
 
 const links = siteConfig.nav;
 
@@ -33,7 +34,7 @@ export default function Navbar() {
       <nav className="site-container flex items-center justify-between h-[72px]">
         <Link href="/" className="flex-shrink-0">
           <Image
-            src="/logo.png"
+            src={getAssetPath('/logo.png')}
             alt={siteConfig.companyName}
             width={796}
             height={344}

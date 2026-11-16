@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { getAssetPath } from '@/lib/asset-path';
 
 interface ProductCardProps {
   name: string;
@@ -18,7 +19,7 @@ export default function ProductCard({ name, hsCode, indiaRank, description, moq,
       {/* Image */}
       <div className="relative h-48 overflow-hidden">
         <Image
-          src={image}
+          src={getAssetPath(image)}
           alt={name}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"

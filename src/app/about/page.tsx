@@ -8,7 +8,7 @@ import siteConfig from '@site-config';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: `Learn about ${siteConfig.companyName} — a Delhi-based export company connecting international buyers with verified Indian manufacturers across 11+ product categories.`,
+  description: `Learn about ${siteConfig.companyName} — a Gandhingar-based export company connecting international buyers with verified Indian manufacturers across 11+ product categories.`,
   alternates: { canonical: '/about' },
 };
 

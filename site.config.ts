@@ -13,9 +13,9 @@ const siteConfig = {
   tagline: 'Premium Indian Export Partner',
   domain: 'https://fastscalingai.com',
   foundedYear: '2024',
-  location: 'Delhi, India',
+  location: 'Gandhinagar, India',
   address: {
-    city: 'Delhi',
+    city: 'Gandhinagar',
     country: 'IN',
   },
   description:
@@ -261,13 +261,13 @@ const siteConfig = {
   // ─── About Page ─────────────────────────────────────────
   about: {
     story: [
-      'Fast Scaling Trade is an export trading company based in Delhi, India. We help international buyers source high-quality Indian products — from food and spices to textiles, leather goods, and handicrafts.',
+      'Fast Scaling Trade is an export trading company based in Gandhinagar, India. We help international buyers source high-quality Indian products — from food and spices to textiles, leather goods, and handicrafts.',
       "India is the world's largest producer of spices, jute, and tea, and a leading manufacturer of textiles, leather, pharmaceuticals, and handicrafts. We give you direct access to this manufacturing base with guaranteed quality and competitive pricing.",
       'Our team has hands-on trade experience across 11+ product categories and has shipped to buyers in Tanzania, Zambia, Kenya, DRC, Nigeria, UAE, UK, China, and Australia.',
       'Whether you need a single sample or a full container load, we handle sourcing, quality inspection, documentation, and shipping — so you receive exactly what you ordered, on time.',
     ],
     milestones: [
-      { year: '2024', event: 'Fast Scaling Trade founded in Delhi, India' },
+      { year: '2024', event: 'Fast Scaling Trade founded in Gandhinagar, India' },
       { year: '2024', event: 'First export shipment to Tanzania' },
       { year: '2024', event: 'Registered with Export Promotion Councils (RCMC)' },
       { year: '2025', event: 'Expanded to Kenya, Zambia, and UAE markets' },

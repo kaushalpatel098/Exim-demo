@@ -2,6 +2,8 @@
 import Image from 'next/image';
 import FadeIn from './FadeIn';
 import siteConfig from '@site-config';
+import {getAssetPath} from '@/lib/asset-path';
+
 
 interface PageHeroProps {
   title: string;
@@ -11,10 +13,11 @@ interface PageHeroProps {
 }
 
 export default function PageHero({ title, subtitle, imageSrc, imageAlt }: PageHeroProps) {
+  
   return (
     <section className="relative py-32 md:py-40 overflow-hidden">
       <Image
-        src={imageSrc}
+        src={getAssetPath(imageSrc)}
         alt={imageAlt}
         fill
         priority
