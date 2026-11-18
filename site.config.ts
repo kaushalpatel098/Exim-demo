@@ -7,9 +7,11 @@
  * After editing, run: npm run build
  */
 
+import { getAssetPath } from "@/lib/asset-path";
+
 const siteConfig = {
   // ─── Company Info ───────────────────────────────────────
-  companyName: 'Fast Scaling Trade',
+  companyName: 'Prithvi Exim LLP',
   tagline: 'Premium Indian Export Partner',
   domain: 'https://fastscalingai.com',
   foundedYear: '2024',
@@ -19,7 +21,7 @@ const siteConfig = {
     country: 'IN',
   },
   description:
-    'Fast Scaling Trade is a trusted Indian export partner specializing in jaggery, textiles, leather, carpets, handicrafts, spices, and more. Serving Africa, Middle East, UK, and Asia.',
+    'Prithvi Exim LLP is a trusted Indian export partner specializing in jaggery, textiles, leather, carpets, handicrafts, spices, and more. Serving Africa, Middle East, UK, and Asia.',
 
   // ─── Navigation ─────────────────────────────────────────
   nav: [
@@ -51,11 +53,11 @@ const siteConfig = {
 
   // ─── SEO & Social ───────────────────────────────────────
   seo: {
-    title: 'Fast Scaling Trade | Premium Indian Export Partner',
+    title: 'Prithvi Exim LLP | Premium Indian Export Partner',
     description:
       'Connecting verified Indian manufacturers with international buyers across Africa, Middle East, UK, and Asia. 11+ product categories, competitive pricing, on-time delivery.',
     keywords:
-      'Fast Scaling Trade, Indian exporter, jaggery export, textiles export, Africa trade, Tanzania importer, export from India, international trade',
+      'Prithvi Exim LLP, Indian exporter, jaggery export, textiles export, Africa trade, Tanzania importer, export from India, international trade',
     ogImage: '/og-image.jpg',
   },
 
@@ -112,7 +114,7 @@ const siteConfig = {
       shortDescription: 'Organic blocks & powder',
       moq: '1 MT',
       packaging: '25kg bags',
-      image: '/images/products/jaggery.jpg',
+      image: getAssetPath('/images/products/jaggery.jpg'),
       featured: true,
     },
     {
@@ -125,7 +127,7 @@ const siteConfig = {
       shortDescription: 'Cotton fabrics & garments',
       moq: '500 pcs',
       packaging: 'Poly bags',
-      image: '/images/products/textiles.jpg',
+      image: getAssetPath('/images/products/textiles.jpg'),
       featured: true,
     },
     {
@@ -138,7 +140,7 @@ const siteConfig = {
       shortDescription: 'Premium leather goods',
       moq: '200 pcs',
       packaging: 'Ind. boxes',
-      image: '/images/products/leather.jpg',
+      image: getAssetPath('/images/products/leather.jpg'),
       featured: true,
     },
     {
@@ -151,7 +153,7 @@ const siteConfig = {
       shortDescription: 'Handwoven carpets & rugs',
       moq: '50 pcs',
       packaging: 'Rolled',
-      image: '/images/products/carpets.jpg',
+      image: getAssetPath('/images/products/carpets.jpg'),
       featured: true,
     },
     {
@@ -164,7 +166,7 @@ const siteConfig = {
       shortDescription: 'Artisan crafted products',
       moq: '100 pcs',
       packaging: 'Custom',
-      image: '/images/products/handicrafts.jpg',
+      image: getAssetPath('/images/products/handicrafts.jpg'),
       featured: true,
     },
     {
@@ -177,7 +179,7 @@ const siteConfig = {
       shortDescription: 'Eco-friendly jute bags & sacks',
       moq: '5000 pcs',
       packaging: 'Bales',
-      image: '/images/products/jute.jpg',
+      image: getAssetPath('/images/products/jute.jpg'),
       featured: false,
     },
     {
@@ -190,7 +192,7 @@ const siteConfig = {
       shortDescription: 'Leather & sports footwear',
       moq: '300 pairs',
       packaging: 'Cartons',
-      image: '/images/products/shoes.jpg',
+      image: getAssetPath('/images/products/shoes.jpg'),
       featured: false,
     },
     {
@@ -203,7 +205,7 @@ const siteConfig = {
       shortDescription: 'Premium Indian spices',
       moq: '500 kg',
       packaging: '25kg bags',
-      image: '/images/products/spices.jpg',
+      image: getAssetPath('/images/products/spices.jpg'),
       featured: true,
     },
     {
@@ -216,7 +218,7 @@ const siteConfig = {
       shortDescription: 'Basmati & non-basmati rice',
       moq: '20 MT',
       packaging: '50kg bags',
-      image: '/images/products/rice.jpg',
+      image: getAssetPath('/images/products/rice.jpg'),
       featured: false,
     },
     {
@@ -229,7 +231,7 @@ const siteConfig = {
       shortDescription: 'Assam, Darjeeling & Nilgiri',
       moq: '1 MT',
       packaging: '25kg chests',
-      image: '/images/products/tea.jpg',
+      image: getAssetPath('/images/products/tea.jpg'),
       featured: false,
     },
     {
@@ -242,7 +244,7 @@ const siteConfig = {
       shortDescription: 'Generic medicines & API',
       moq: 'Varies',
       packaging: 'Pharma',
-      image: '/images/products/pharma.jpg',
+      image: getAssetPath('/images/products/pharma.jpg'),
       featured: false,
     },
   ],
@@ -261,13 +263,13 @@ const siteConfig = {
   // ─── About Page ─────────────────────────────────────────
   about: {
     story: [
-      'Fast Scaling Trade is an export trading company based in Gandhinagar, India. We help international buyers source high-quality Indian products — from food and spices to textiles, leather goods, and handicrafts.',
+      'Prithvi Exim LLP is an export trading company based in Gandhinagar, India. We help international buyers source high-quality Indian products — from food and spices to textiles, leather goods, and handicrafts.',
       "India is the world's largest producer of spices, jute, and tea, and a leading manufacturer of textiles, leather, pharmaceuticals, and handicrafts. We give you direct access to this manufacturing base with guaranteed quality and competitive pricing.",
       'Our team has hands-on trade experience across 11+ product categories and has shipped to buyers in Tanzania, Zambia, Kenya, DRC, Nigeria, UAE, UK, China, and Australia.',
       'Whether you need a single sample or a full container load, we handle sourcing, quality inspection, documentation, and shipping — so you receive exactly what you ordered, on time.',
     ],
     milestones: [
-      { year: '2024', event: 'Fast Scaling Trade founded in Gandhinagar, India' },
+      { year: '2024', event: 'Prithvi Exim LLP founded in Gandhinagar, India' },
       { year: '2024', event: 'First export shipment to Tanzania' },
       { year: '2024', event: 'Registered with Export Promotion Councils (RCMC)' },
       { year: '2025', event: 'Expanded to Kenya, Zambia, and UAE markets' },
@@ -277,12 +279,12 @@ const siteConfig = {
 
   // ─── Blog / Resources ──────────────────────────────────
   articles: [
-    { title: "Why Source Products from India? A Buyer's Guide", category: 'Buyer Guide', image: '/images/blog/india-guide.jpg', excerpt: "India is the world's largest producer of spices, jute, and tea, and a top-5 exporter of textiles, leather, and pharmaceuticals. Here's why global buyers increasingly turn to Indian suppliers." },
-    { title: 'Understanding Indian Export Pricing: FOB, CIF & DDP Explained', category: 'Trade Terms', image: '/images/heroes/home-hero.jpg', excerpt: "What's included in the price you're quoted? A clear breakdown of Incoterms, what each pricing model covers, and which one works best for your shipment." },
-    { title: 'Quality Standards of Indian Export Products', category: 'Quality', image: '/images/products/spices.jpg', excerpt: 'From FSSAI certification for food products to BIS standards for industrial goods — understand the quality benchmarks Indian exporters follow and what to look for.' },
-    { title: 'Shipping from India: Ports, Routes, Costs & Transit Times', category: 'Logistics', image: '/images/heroes/home-cta.jpg', excerpt: 'A practical guide to shipping from major Indian ports (JNPT, Mundra, Chennai) to Africa, Middle East, and beyond. FCL vs LCL, freight costs, and how to avoid delays.' },
-    { title: "India's Spice Exports: Varieties, Grades & Global Demand", category: 'Product Spotlight', image: '/images/blog/spice-exports.jpg', excerpt: "India produces 75% of the world's spices. Explore the most in-demand varieties, quality grades, packaging standards, and how to place your first bulk order." },
-    { title: "Payment Security in International Trade: A Buyer's Perspective", category: 'Trade Terms', image: '/images/blog/payment-security.jpg', excerpt: "TT, Letter of Credit, D/P — which payment method offers the best protection for your money? A straightforward guide for first-time importers." },
+    { title: "Why Source Products from India? A Buyer's Guide", category: 'Buyer Guide', image: getAssetPath('/images/blog/india-guide.jpg'), excerpt: "India is the world's largest producer of spices, jute, and tea, and a top-5 exporter of textiles, leather, and pharmaceuticals. Here's why global buyers increasingly turn to Indian suppliers." },
+    { title: 'Understanding Indian Export Pricing: FOB, CIF & DDP Explained', category: 'Trade Terms', image: getAssetPath('/images/heroes/home-hero.jpg'), excerpt: "What's included in the price you're quoted? A clear breakdown of Incoterms, what each pricing model covers, and which one works best for your shipment." },
+    { title: 'Quality Standards of Indian Export Products', category: 'Quality', image: getAssetPath('/images/products/spices.jpg'), excerpt: 'From FSSAI certification for food products to BIS standards for industrial goods — understand the quality benchmarks Indian exporters follow and what to look for.' },
+    { title: 'Shipping from India: Ports, Routes, Costs & Transit Times', category: 'Logistics', image: getAssetPath('/images/heroes/home-cta.jpg'), excerpt: 'A practical guide to shipping from major Indian ports (JNPT, Mundra, Chennai) to Africa, Middle East, and beyond. FCL vs LCL, freight costs, and how to avoid delays.' },
+    { title: "India's Spice Exports: Varieties, Grades & Global Demand", category: 'Product Spotlight', image: getAssetPath('/images/blog/spice-exports.jpg'), excerpt: "India produces 75% of the world's spices. Explore the most in-demand varieties, quality grades, packaging standards, and how to place your first bulk order." },
+    { title: "Payment Security in International Trade: A Buyer's Perspective", category: 'Trade Terms', image: getAssetPath('/images/blog/payment-security.jpg'), excerpt: "TT, Letter of Credit, D/P — which payment method offers the best protection for your money? A straightforward guide for first-time importers." },
   ],
 
   // ─── Footer Quick Links ─────────────────────────────────
