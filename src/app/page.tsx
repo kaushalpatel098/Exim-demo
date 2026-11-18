@@ -197,7 +197,7 @@ export default function Home() {
       {/* CTA */}
       <section className="relative py-32 overflow-hidden">
         <Image
-          src="/images/heroes/home-cta.jpg"
+          src={getAssetPath('/images/heroes/home-cta.jpg')}
           alt="Shipping containers at port"
           fill
           sizes="100vw"

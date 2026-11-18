@@ -50,7 +50,7 @@ export default function AboutPage() {
             <FadeIn direction="right">
               <div className="relative rounded-2xl overflow-hidden h-[440px]">
                 <Image
-                  src="/images/heroes/about-story.jpg"
+                  src={getAssetPath('/images/heroes/about-story.jpg')}
                   alt="Indian products and manufacturing"
                   fill
                   sizes="(min-width: 768px) 50vw, 100vw"

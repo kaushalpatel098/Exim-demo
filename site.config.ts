@@ -58,7 +58,7 @@ const siteConfig = {
       'Connecting verified Indian manufacturers with international buyers across Africa, Middle East, UK, and Asia. 11+ product categories, competitive pricing, on-time delivery.',
     keywords:
       'Prithvi Exim LLP, Indian exporter, jaggery export, textiles export, Africa trade, Tanzania importer, export from India, international trade',
-    ogImage: '/og-image.jpg',
+    ogImage: getAssetPath('/og-image.jpg'),
   },
 
   // ─── Hero Section ───────────────────────────────────────
