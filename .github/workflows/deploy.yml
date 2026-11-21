@@ -1,3 +1,4 @@
+
 name: Deploy to GitHub Pages
 
 on:
@@ -44,14 +45,18 @@ jobs:
           GITHUB_PAGES: 'true'
           NEXT_PUBLIC_BASE_PATH: /Exim-demo
 
+      - name: Verify output
+        run: |
+          echo "Checking export directory..."
+          test -d ./out
+          ls -la ./out
+          test -f ./out/index.html
+
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
-          name: github-pages-${{ github.run_attempt }}
           path: ./out
 
       - name: Deploy website
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          artifact_name: github-pages-${{ github.run_attempt }}
