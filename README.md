@@ -80,9 +80,11 @@ Images are in `public/images/`:
 2. Update `src/app/layout.tsx` metadata only if you need fields not covered by the config
 3. `sitemap.xml` and `robots.txt` are generated from `src/app/sitemap.ts` and `src/app/robots.ts` — do not add them to `public/`
 
-## Deploy to Vercel
+## Deploy to GitHub Pages
 
-Import the GitHub repository in Vercel and use the default Next.js build settings. The application uses a server route for its contact form, so it must run on a Next.js host; GitHub Pages/static export is not supported. Configure `RESEND_API_KEY`, `NOTIFY_EMAIL`, and `FROM_EMAIL` in the Vercel project's Environment Variables for Preview and Production. `FROM_EMAIL` must use a domain verified in Resend.
+The `static-demo` branch deploys through `.github/workflows/deploy.yml`. In the repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**. The workflow exports to `out/` with the `/Exim-demo` base path.
+
+GitHub Pages serves only static files and cannot run the Resend API route. The site pages deploy there, but contact-form delivery requires a separately hosted API endpoint. To run the form with the current Resend route, deploy the application to Vercel and set `RESEND_API_KEY`, `NOTIFY_EMAIL`, and `FROM_EMAIL` in the Vercel project's Environment Variables. `FROM_EMAIL` must use a domain verified in Resend.
 
 For local development, copy `.env.example` to `.env.local`, replace the placeholders, then run `npm run dev`. The Resend API key is read only by the server route and must never use a `NEXT_PUBLIC_` prefix.
 

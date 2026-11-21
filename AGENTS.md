@@ -11,7 +11,7 @@ Next.js 14 App Router marketing site deployed as a server-rendered Next.js appli
 - Never run `npm run build` while `npm run dev` is running. Both write `.next/`, and the build clobbers the dev server's stylesheet (pages then load with no CSS). If that happens: stop dev, `rm -rf .next`, restart dev.
 - No ESLint config and no test suite. Don't run `next lint` (it would scaffold ESLint).
 - CI runs `npm ci && npm run build` (`.github/workflows/ci.yml`, Node from `.nvmrc`)
-- Deploy: Vercel (or another host that supports Next.js server routes)
+- Deploy: GitHub Pages from the `static-demo` branch for static pages. A server host is required for the Resend API route.
 
 ## Content lives in `site.config.ts`
 
@@ -23,6 +23,7 @@ Page-specific copy remains in `src/app/*/page.tsx`: process steps, benefits, tra
 
 - `next.config.js` uses the standard Next.js server output and `images.unoptimized: true`.
 - `src/app/api/contact/route.ts` sends validated contact submissions through Resend. Keep `RESEND_API_KEY`, `NOTIFY_EMAIL`, and `FROM_EMAIL` server-only; never prefix secrets with `NEXT_PUBLIC_`.
+- GitHub Actions sets `GITHUB_PAGES=true` and exports static files to `out/`. GitHub Pages cannot run `src/app/api/contact/route.ts`, so Resend form delivery requires a separately hosted API.
 - The contact form includes a honeypot and origin check. Configure hosting-level rate limiting or bot protection before exposing it to high-volume traffic.
 - `next/image` needs `unoptimized` (repo passes it everywhere) and assets under `public/images/`.
 - Client components must keep `'use client'`: `FadeIn`, `PageHero`, `Navbar`, `ContactForm`, `WhatsAppButton`, `Footer` is server-side. Pages stay server components.
