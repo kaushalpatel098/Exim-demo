@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import siteConfig from '@site-config';
 
-const routes = [...siteConfig.nav.map((item) => item.href), '/privacy'];
+const routes = ['/', '/products', '/contact'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
