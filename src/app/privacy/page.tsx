@@ -27,7 +27,7 @@ const sections = [
   {
     heading: 'Third-party processors',
     paragraphs: [
-      'Contact form submissions are delivered through Web3Forms, which processes the form data on our behalf and forwards it to our business email.',
+      'Contact form submissions are delivered through Resend, which processes the form data on our behalf and forwards it to our business email.',
       'If analytics are enabled, Google Analytics processes usage data under Google\'s terms. Our hosting provider processes technical logs for the site.',
       'These providers may process data outside your country, including in the United States.',
     ],

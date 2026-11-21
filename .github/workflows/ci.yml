@@ -23,5 +23,3 @@ jobs:
 
       - name: Build Next.js
         run: npm run build
-        env:
-          NEXT_PUBLIC_BASE_PATH: /Exim-demo

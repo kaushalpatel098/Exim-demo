@@ -69,10 +69,13 @@ const jsonLd = {
   description: siteConfig.seo.description,
   address: {
     '@type': 'PostalAddress',
+    streetAddress: siteConfig.address.streetAddress,
     addressLocality: siteConfig.address.city,
+    addressRegion: siteConfig.address.region,
     addressCountry: siteConfig.address.country,
   },
   email: siteConfig.emails.general,
+  telephone: [siteConfig.phones.general, siteConfig.phones.exports],
   ...(Object.values(siteConfig.social).filter(Boolean).length > 0 && {
     sameAs: Object.values(siteConfig.social).filter(Boolean),
   }),

@@ -34,7 +34,7 @@ export default function Navbar() {
       <nav className="site-container flex items-center justify-between h-[72px]">
         <Link href="/" className="flex-shrink-0">
           <Image
-            src={getAssetPath('/logo.png')}
+            src={getAssetPath('/logo.svg')}
             alt={siteConfig.companyName}
             width={796}
             height={344}

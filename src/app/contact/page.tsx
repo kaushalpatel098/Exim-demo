@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
 import PageHero from '@/components/PageHero';
 import FadeIn from '@/components/FadeIn';
-import { Mail, Package, MapPin, Clock, CheckCircle2, Shield } from 'lucide-react';
+import { Mail, Phone, Package, MapPin, Clock, CheckCircle2, Shield } from 'lucide-react';
 import siteConfig from '@site-config';
 import { getAssetPath } from '@/lib/asset-path';
 
@@ -15,6 +15,8 @@ export const metadata: Metadata = {
 const contactInfo = [
   { icon: Mail, label: 'General Inquiries', value: siteConfig.emails.general, link: `mailto:${siteConfig.emails.general}` },
   { icon: Package, label: 'Export & Sales', value: siteConfig.emails.exports, link: `mailto:${siteConfig.emails.exports}` },
+  { icon: Phone, label: 'General Phone', value: siteConfig.phones.general, link: `tel:${siteConfig.phones.general.replace(/\s/g, '')}` },
+  { icon: Phone, label: 'Export Sales Phone', value: siteConfig.phones.exports, link: `tel:${siteConfig.phones.exports.replace(/\s/g, '')}` },
   { icon: MapPin, label: 'Office', value: siteConfig.location, link: null },
   { icon: Clock, label: 'Response Time', value: 'Within 24 hours', link: null },
 ];

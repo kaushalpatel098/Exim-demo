@@ -62,7 +62,7 @@ export default function AboutPage() {
                   <dl className="grid grid-cols-2 gap-4 text-sm">
                     <div>
                       <dt className="text-brand-400 text-[10px] uppercase tracking-wide">Headquarters</dt>
-                      <dd className="font-semibold text-white mt-0.5">{siteConfig.location}</dd>
+                      <dd className="font-semibold text-white mt-0.5">{siteConfig.locationShort}</dd>
                     </div>
                     <div>
                       <dt className="text-brand-400 text-[10px] uppercase tracking-wide">Founded</dt>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, MapPin, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
 import siteConfig from '@site-config';
 import { getAssetPath } from '@/lib/asset-path';
 
@@ -34,7 +34,7 @@ export default function Footer() {
           <div className="md:col-span-2 lg:col-span-1">
             <div className="mb-5">
               <Image
-                src={getAssetPath('/logo.png')}
+                src={getAssetPath('/logo.svg')}
                 alt={siteConfig.companyName}
                 width={796}
                 height={344}
@@ -87,8 +87,15 @@ export default function Footer() {
                 </div>
               </li>
               <li className="flex items-start gap-3">
+                <Phone className="w-4 h-4 mt-0.5 text-accent-500 flex-shrink-0" />
+                <div>
+                  <a href={`tel:${siteConfig.phones.general.replace(/\s/g, '')}`} className="hover:text-white transition-colors block">{siteConfig.phones.general}</a>
+                  <a href={`tel:${siteConfig.phones.exports.replace(/\s/g, '')}`} className="hover:text-white transition-colors block">{siteConfig.phones.exports}</a>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-0.5 text-accent-500 flex-shrink-0" />
-                <span>{siteConfig.location}</span>
+                <span>{siteConfig.locationShort}</span>
               </li>
             </ul>
           </div>

@@ -3,46 +3,47 @@ import { useState } from 'react';
 import { Send, CheckCircle, AlertCircle, Loader2, Mail } from 'lucide-react';
 import siteConfig from '@site-config';
 
-// Public Web3Forms key. Rotate without a code change via NEXT_PUBLIC_WEB3FORMS_KEY.
-const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || siteConfig.web3formsKey;
-
 const countries = siteConfig.contactCountries;
 const products = siteConfig.contactProducts;
 
 export default function ContactForm() {
   const [form, setForm] = useState({ name: '', email: '', company: '', country: '', product: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('sending');
+    setErrorMessage('');
+    const website = (e.currentTarget.elements.namedItem('website') as HTMLInputElement)?.value ?? '';
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: `[${siteConfig.companyName}] Export Inquiry: ${form.product || 'General'} from ${form.name}`,
-          from_name: `${siteConfig.companyName} Website`,
-          name: form.name, email: form.email,
-          company: form.company || 'Not provided',
-          country: form.country || 'Not selected',
-          product_interest: form.product || 'Not specified',
-          message: form.message || 'No message provided',
-        }),
+        body: JSON.stringify({ ...form, website }),
       });
-      const data = await res.json();
-      if (data.success) {
+      const data = await res.json().catch(() => null);
+      if (res.ok && data?.success) {
         setStatus('sent');
         setForm({ name: '', email: '', company: '', country: '', product: '', message: '' });
-      } else { setStatus('error'); }
-    } catch { setStatus('error'); }
+      } else {
+        setStatus('error');
+        setErrorMessage(typeof data?.error === 'string' ? data.error : 'Please try again or email us directly.');
+      }
+    } catch {
+      setStatus('error');
+      setErrorMessage('Please check your connection and try again, or email us directly.');
+    }
   };
 
   const inputClass = 'w-full px-4 py-3.5 rounded-xl border border-brand-200 bg-white focus:ring-2 focus:ring-accent-500/20 focus:border-accent-500 outline-none transition-all duration-200 text-sm text-brand-800 placeholder:text-brand-400';
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+        <label htmlFor="contact-website">Leave this field empty</label>
+        <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <input required placeholder="Full Name *" className={inputClass} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
         <input required type="email" placeholder="Email Address *" className={inputClass} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
@@ -72,9 +73,9 @@ export default function ContactForm() {
         </button>
       )}
       {status === 'error' && (
-        <div className="flex items-center gap-3 bg-rose-50 text-rose-600 p-4 rounded-xl border border-rose-200">
+        <div role="alert" className="flex items-center gap-3 bg-rose-50 text-rose-600 p-4 rounded-xl border border-rose-200">
           <AlertCircle className="w-5 h-5 flex-shrink-0" />
-          <span className="text-sm font-medium">Failed to send. Please email us directly at {siteConfig.emails.exports}</span>
+          <span className="text-sm font-medium">{errorMessage} Please email us directly at {siteConfig.emails.exports}</span>
         </div>
       )}
       <div className="flex items-center gap-2 text-xs text-brand-400 pt-1">

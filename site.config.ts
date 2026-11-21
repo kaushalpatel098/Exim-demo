@@ -11,17 +11,20 @@ import { getAssetPath } from "@/lib/asset-path";
 
 const siteConfig = {
   // ─── Company Info ───────────────────────────────────────
-  companyName: 'Prithvi Exim LLP',
+  companyName: 'Prithvi International Exim LLP',
   tagline: 'Premium Indian Export Partner',
   domain: 'https://fastscalingai.com',
   foundedYear: '2024',
-  location: 'Gandhinagar, India',
+  location: 'W501, Siddharaj Z Square, Opp. The Landmark, Kudasan, Gandhinagar',
+  locationShort: 'Kudasan, Gandhinagar, India',
   address: {
+    streetAddress: 'W501, Siddharaj Z Square, Opp. The Landmark, Kudasan',
     city: 'Gandhinagar',
+    region: 'Gujarat',
     country: 'IN',
   },
   description:
-    'Prithvi Exim LLP is a trusted Indian export partner specializing in jaggery, textiles, leather, carpets, handicrafts, spices, and more. Serving Africa, Middle East, UK, and Asia.',
+    'Prithvi International Exim LLP is a trusted Indian export partner specializing in jaggery, textiles, leather, carpets, handicrafts, spices, and more. Serving Africa, Middle East, UK, and Asia.',
 
   // ─── Navigation ─────────────────────────────────────────
   nav: [
@@ -35,16 +38,16 @@ const siteConfig = {
 
   // ─── Contact ────────────────────────────────────────────
   emails: {
-    general: 'info@fastscalingai.com',
-    exports: 'exports@fastscalingai.com',
+    general: 'info@p-i-e-group.com',
+    exports: 'exports@p-i-e-group.com',
+  },
+  phones: {
+    general: '+91 9998720118',
+    exports: '+91 9512555000',
   },
   // WhatsApp Business number with country code, no "+" (e.g. 919876543210).
   // Leave empty or keep the placeholder to hide the floating button.
   whatsapp: '91XXXXXXXXXX',
-
-  // Public Web3Forms access key (used by the client-side contact form).
-  // Override at build time with NEXT_PUBLIC_WEB3FORMS_KEY.
-  web3formsKey: '369b3cb9-af19-4377-aa93-f56ffc9d43ff', // Get yours free at https://web3forms.com
 
   // ─── Social ─────────────────────────────────────────────
   social: {
@@ -53,11 +56,11 @@ const siteConfig = {
 
   // ─── SEO & Social ───────────────────────────────────────
   seo: {
-    title: 'Prithvi Exim LLP | Premium Indian Export Partner',
+    title: 'Prithvi International Exim LLP | Premium Indian Export Partner',
     description:
       'Connecting verified Indian manufacturers with international buyers across Africa, Middle East, UK, and Asia. 11+ product categories, competitive pricing, on-time delivery.',
     keywords:
-      'Prithvi Exim LLP, Indian exporter, jaggery export, textiles export, Africa trade, Tanzania importer, export from India, international trade',
+      'Prithvi International Exim LLP, Indian exporter, jaggery export, textiles export, Africa trade, Tanzania importer, export from India, international trade',
     ogImage: getAssetPath('/og-image.jpg'),
   },
 
@@ -263,13 +266,13 @@ const siteConfig = {
   // ─── About Page ─────────────────────────────────────────
   about: {
     story: [
-      'Prithvi Exim LLP is an export trading company based in Gandhinagar, India. We help international buyers source high-quality Indian products — from food and spices to textiles, leather goods, and handicrafts.',
+      'Prithvi International Exim LLP is an export trading company based in Gandhinagar, India. We help international buyers source high-quality Indian products — from food and spices to textiles, leather goods, and handicrafts.',
       "India is the world's largest producer of spices, jute, and tea, and a leading manufacturer of textiles, leather, pharmaceuticals, and handicrafts. We give you direct access to this manufacturing base with guaranteed quality and competitive pricing.",
       'Our team has hands-on trade experience across 11+ product categories and has shipped to buyers in Tanzania, Zambia, Kenya, DRC, Nigeria, UAE, UK, China, and Australia.',
       'Whether you need a single sample or a full container load, we handle sourcing, quality inspection, documentation, and shipping — so you receive exactly what you ordered, on time.',
     ],
     milestones: [
-      { year: '2024', event: 'Prithvi Exim LLP founded in Gandhinagar, India' },
+      { year: '2024', event: 'Prithvi International Exim LLP founded in Gandhinagar, India' },
       { year: '2024', event: 'First export shipment to Tanzania' },
       { year: '2024', event: 'Registered with Export Promotion Councils (RCMC)' },
       { year: '2025', event: 'Expanded to Kenya, Zambia, and UAE markets' },
