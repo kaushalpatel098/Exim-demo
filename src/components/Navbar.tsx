@@ -38,7 +38,7 @@ export default function Navbar() {
             alt={siteConfig.companyName}
             width={796}
             height={344}
-            className={`h-10 w-auto transition-all duration-300 ${
+            className={`h-12 w-auto transition-all duration-300 ${
               isTransparent ? 'brightness-0 invert' : ''
             }`}
             unoptimized
