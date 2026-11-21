@@ -29,7 +29,7 @@ export default function Footer() {
 
       {/* Main Footer */}
       <div className="bg-brand-950 text-brand-400">
-        <div className="site-container py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 xl:gap-12">
+        <div className="site-container py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 xl:gap-12">
           {/* Brand */}
           <div className="md:col-span-2 lg:col-span-1">
             <div className="mb-5">
@@ -63,7 +63,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Markets */}
+          {/* TEMPORARILY HIDDEN: restore the markets footer column when market pages are live.
           <div>
             <h4 className="text-white font-semibold mb-5 text-xs uppercase tracking-[0.2em]">Markets</h4>
             <ul className="space-y-3 text-sm">
@@ -74,6 +74,7 @@ export default function Footer() {
               ))}
             </ul>
           </div>
+          */}
 
           {/* Contact */}
           <div>

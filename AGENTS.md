@@ -37,7 +37,7 @@ Page-specific copy remains in `src/app/*/page.tsx`: process steps, benefits, tra
 
 ## Content safety
 
-- Never expose internal margins/costs on public pages. Product cards intentionally show rank, MOQ, and packaging only.
+- Never expose internal margins/costs on public pages. Product cards show product specifications, form, quotation-based MOQ, and packaging only.
 - The WhatsApp button hides itself while `siteConfig.whatsapp` is empty or contains the `91XXXXXXXXXX` placeholder. Override with `NEXT_PUBLIC_WHATSAPP_NUMBER` (digits, country code, no `+`).
 - Resend credentials are runtime server environment variables and must never use a `NEXT_PUBLIC_` prefix.
 - Business claims (certifications, rankings, stats) are owned by the business; don't invent new ones.

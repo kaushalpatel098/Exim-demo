@@ -9,7 +9,7 @@ import { getAssetPath } from '@/lib/asset-path';
 
 export const metadata: Metadata = {
   title: 'Export Products',
-  description: 'Explore 11+ categories of premium Indian export products — jaggery, textiles, leather, carpets, handicrafts, spices, rice, tea, and more. Competitive pricing, quality assured.',
+  description: 'Explore pharmaceutical medicines and medical and surgical supplies sourced from India, including finished-dose medicines, examination gloves, syringes, IV supplies, dressings, and sutures.',
   alternates: { canonical: '/products' },
 };
 
@@ -20,7 +20,7 @@ export default function ProductsPage() {
     <>
       <PageHero
         title="Our Export Products"
-        subtitle="Premium Indian products sourced from verified manufacturers. Competitive pricing, quality assured, and ready to ship worldwide."
+        subtitle="Explore pharmaceutical medicines and medical and surgical supplies sourced to buyer specifications. Product registration and import requirements vary by destination market."
         imageSrc={getAssetPath('/images/heroes/products.jpg')}
         imageAlt="Product warehouse"
       />

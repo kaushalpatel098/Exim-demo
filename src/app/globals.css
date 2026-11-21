@@ -24,7 +24,7 @@ html { scroll-behavior: smooth; }
   /* Premium hero overlay — deep charcoal with teal tint */
   .hero-overlay {
     @apply absolute inset-0;
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(17, 94, 89, 0.85) 50%, rgba(15, 23, 42, 0.88) 100%);
+    background: linear-gradient(125deg, rgba(11, 29, 53, 0.94) 0%, rgba(21, 48, 84, 0.88) 58%, rgba(32, 73, 87, 0.82) 100%);
   }
 
   /* Elegant card hover with glow */
@@ -37,7 +37,7 @@ html { scroll-behavior: smooth; }
 
   /* Teal gradient text */
   .gradient-text {
-    background: linear-gradient(135deg, #14b8a6, #2dd4bf, #14b8a6);
+    background: linear-gradient(110deg, #d9bc70 0%, #be9543 38%, #53b1c4 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -46,7 +46,7 @@ html { scroll-behavior: smooth; }
 
   /* Subtle shimmer for accents */
   .shimmer {
-    background: linear-gradient(90deg, #14b8a6, #2dd4bf, #5eead4, #2dd4bf, #14b8a6);
+    background: linear-gradient(90deg, #a77d30, #d9bc70, #53b1c4, #d9bc70, #a77d30);
     background-size: 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -77,7 +77,7 @@ html { scroll-behavior: smooth; }
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, #14b8a6, #2dd4bf, #0d9488);
+    background: linear-gradient(135deg, #be9543, #53b1c4, #89651f);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -87,11 +87,11 @@ html { scroll-behavior: smooth; }
   /* Animated mesh gradient */
   .mesh-gradient {
     background:
-      radial-gradient(at 40% 20%, rgba(20, 184, 166, 0.12) 0px, transparent 50%),
-      radial-gradient(at 80% 0%, rgba(45, 212, 191, 0.08) 0px, transparent 50%),
-      radial-gradient(at 0% 50%, rgba(15, 118, 110, 0.08) 0px, transparent 50%),
-      radial-gradient(at 80% 50%, rgba(20, 184, 166, 0.06) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, rgba(45, 212, 191, 0.1) 0px, transparent 50%);
+      radial-gradient(at 40% 20%, rgba(43, 157, 182, 0.13) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, rgba(190, 149, 67, 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, rgba(35, 129, 152, 0.08) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, rgba(43, 157, 182, 0.07) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(190, 149, 67, 0.08) 0px, transparent 50%);
   }
 }
 
@@ -113,6 +113,6 @@ html { scroll-behavior: smooth; }
 
 /* Selection color */
 ::selection {
-  background: rgba(20, 184, 166, 0.2);
-  color: #0f172a;
+  background: rgba(190, 149, 67, 0.24);
+  color: #153054;
 }

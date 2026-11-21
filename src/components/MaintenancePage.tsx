@@ -1,6 +1,8 @@
 import Link from 'next/link';
-import { ArrowRight, Mail, Sparkles } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowRight, Mail } from 'lucide-react';
 import siteConfig from '@site-config';
+import { getAssetPath } from '@/lib/asset-path';
 
 interface MaintenancePageProps {
   section?: string;
@@ -15,8 +17,15 @@ export default function MaintenancePage({ section }: MaintenancePageProps) {
 
       <div className="site-container">
         <div className="mx-auto max-w-3xl rounded-3xl border border-brand-100 bg-white px-6 py-12 text-center shadow-elevated md:px-14 md:py-16">
-          <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent-50 text-accent-700">
-            <Sparkles className="h-6 w-6" aria-hidden="true" />
+          <div className="mx-auto mb-6 flex justify-center">
+            <Image
+              src={getAssetPath('/logo.svg')}
+              alt={siteConfig.companyName}
+              width={168}
+              height={148}
+              className="h-24 w-auto"
+              unoptimized
+            />
           </div>
 
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-700">

@@ -5,15 +5,15 @@ import { getAssetPath } from '@/lib/asset-path';
 
 interface ProductCardProps {
   name: string;
-  hsCode: string;
-  indiaRank: string;
+  specification: string;
+  productForm: string;
   description: string;
   moq: string;
   packaging: string;
   image: string;
 }
 
-export default function ProductCard({ name, hsCode, indiaRank, description, moq, packaging, image }: ProductCardProps) {
+export default function ProductCard({ name, specification, productForm, description, moq, packaging, image }: ProductCardProps) {
   return (
     <div className="group bg-white rounded-2xl border border-brand-100 overflow-hidden card-hover flex flex-col">
       {/* Image */}
@@ -32,13 +32,13 @@ export default function ProductCard({ name, hsCode, indiaRank, description, moq,
       {/* Content */}
       <div className="p-6 flex flex-col flex-1">
         <h3 className="font-display text-lg font-bold text-brand-900 mb-1">{name}</h3>
-        <p className="text-xs text-brand-400 mb-3">HS Code: {hsCode}</p>
+        <p className="text-xs text-brand-400 mb-3">Specification: {specification}</p>
         <p className="text-sm text-brand-600 mb-5 flex-1 leading-relaxed">{description}</p>
 
         <div className="grid grid-cols-3 gap-2 text-xs mb-5">
           <div className="bg-accent-50 rounded-xl px-2.5 py-2.5 text-center">
-            <div className="text-brand-400 text-[10px] uppercase tracking-wide">Rank</div>
-            <div className="font-bold text-accent-700 mt-0.5">{indiaRank}</div>
+            <div className="text-brand-400 text-[10px] uppercase tracking-wide">Form</div>
+            <div className="font-bold text-accent-700 mt-0.5">{productForm}</div>
           </div>
           <div className="bg-brand-50 rounded-xl px-2.5 py-2.5 text-center">
             <div className="text-brand-400 text-[10px] uppercase tracking-wide">MOQ</div>

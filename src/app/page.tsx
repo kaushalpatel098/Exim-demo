@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import FadeIn from '@/components/FadeIn';
 import SectionHeader from '@/components/SectionHeader';
-import { ChevronDown, Shield, Award, CheckCircle, FileText, Package, Truck, MessageSquare, ArrowRight, Globe, Clock, Calendar } from 'lucide-react';
+import { ChevronDown, Shield, Award, CheckCircle, FileText, Package, Truck, MessageSquare, ArrowRight, Clock } from 'lucide-react';
 import siteConfig from '@site-config';
 import { getAssetPath } from '@/lib/asset-path';
 
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 };
 
-const statIcons = [Package, Globe, Clock, Calendar];
+const statIcons = [Package, Clock];
 const stats = siteConfig.stats.map((stat, index) => ({ ...stat, icon: statIcons[index] }));
 
 const products = siteConfig.products
@@ -94,7 +94,7 @@ export default function Home() {
       {/* Stats — floating glass cards */}
       <section className="relative -mt-16 z-20 pb-24">
         <div className="max-w-6xl xl:max-w-7xl 2xl:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 xl:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 xl:gap-6">
             {stats.map((s, i) => (
               <FadeIn key={s.label} delay={i * 0.1}>
                 <div className="bg-white rounded-2xl p-6 shadow-elevated border border-brand-100 text-center">
@@ -113,8 +113,8 @@ export default function Home() {
         <div className="site-container">
           <SectionHeader
             eyebrow="What We Export"
-            headline="Premium Indian Products"
-            subheadline="Carefully sourced from verified Indian manufacturers. Every product meets international quality standards."
+            headline="Pharmaceuticals & Surgical Supplies"
+            subheadline="Explore medicines and medical supplies sourced from India to buyer specifications and destination-market requirements."
           />
           <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5 xl:gap-6">
             {products.map((p, i) => (
