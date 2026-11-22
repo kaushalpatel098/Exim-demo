@@ -117,7 +117,7 @@ const siteConfig = {
       shortDescription: '500 mg tablets; other strengths available',
       moq: 'By quotation',
       packaging: 'Blister / bottle',
-      image: getAssetPath('/images/products/pharma.jpg'),
+      image: getAssetPath('/images/products/paracetamol.jpg'),
       featured: true,
     },
     {
@@ -129,7 +129,7 @@ const siteConfig = {
       shortDescription: '250 mg and 500 mg capsules',
       moq: 'By quotation',
       packaging: 'Blister / bottle',
-      image: getAssetPath('/images/products/pharma.jpg'),
+      image: getAssetPath('/images/products/amoxicillin.jpg'),
       featured: true,
     },
     {
@@ -141,7 +141,7 @@ const siteConfig = {
       shortDescription: 'Immediate-release tablets',
       moq: 'By quotation',
       packaging: 'Blister / bottle',
-      image: getAssetPath('/images/products/pharma.jpg'),
+      image: getAssetPath('/images/products/Metformin.jpg'),
       featured: true,
     },
     {
@@ -153,7 +153,7 @@ const siteConfig = {
       shortDescription: '2.5 mg, 5 mg, and 10 mg tablets',
       moq: 'By quotation',
       packaging: 'Blister / bottle',
-      image: getAssetPath('/images/products/pharma.jpg'),
+      image: getAssetPath('/images/products/amlodipine.jpg'),
       featured: false,
     },
     {
@@ -165,7 +165,7 @@ const siteConfig = {
       shortDescription: '20 mg and 40 mg capsules',
       moq: 'By quotation',
       packaging: 'Blister / bottle',
-      image: getAssetPath('/images/products/pharma.jpg'),
+      image: getAssetPath('/images/products/omeprazole.jpg'),
       featured: false,
     },
     {
@@ -177,7 +177,7 @@ const siteConfig = {
       shortDescription: '10 mg tablets',
       moq: 'By quotation',
       packaging: 'Blister / bottle',
-      image: getAssetPath('/images/products/pharma.jpg'),
+      image: getAssetPath('/images/products/cetirizine.jpg'),
       featured: false,
     },
     {
@@ -189,7 +189,7 @@ const siteConfig = {
       shortDescription: 'Single-dose oral rehydration sachets',
       moq: 'By quotation',
       packaging: 'Sachets / cartons',
-      image: getAssetPath('/images/products/pharma.jpg'),
+      image: getAssetPath('/images/products/Oral Rehydration Salts.jpg'),
       featured: false,
     },
     {
@@ -201,7 +201,7 @@ const siteConfig = {
       shortDescription: 'Single-use examination gloves',
       moq: 'By quotation',
       packaging: 'Boxes / cartons',
-      image: getAssetPath('/images/products/pharma.jpg'),
+      image: getAssetPath('/images/products/Nitrile Examination Gloves.jpg'),
       featured: true,
     },
     {
@@ -213,7 +213,7 @@ const siteConfig = {
       shortDescription: 'Sterile single-use syringes',
       moq: 'By quotation',
       packaging: 'Individual packs / cartons',
-      image: getAssetPath('/images/products/pharma.jpg'),
+      image: getAssetPath('/images/products/Disposable syringes & needles.jpg'),
       featured: true,
     },
     {
@@ -225,7 +225,7 @@ const siteConfig = {
       shortDescription: 'Peripheral cannulas in multiple sizes',
       moq: 'By quotation',
       packaging: 'Sterile packs / cartons',
-      image: getAssetPath('/images/products/pharma.jpg'),
+      image: getAssetPath('/images/products/IV Cannulas.jpg'),
       featured: false,
     },
     {
@@ -237,7 +237,7 @@ const siteConfig = {
       shortDescription: 'Single-use infusion sets',
       moq: 'By quotation',
       packaging: 'Individual packs / cartons',
-      image: getAssetPath('/images/products/pharma.jpg'),
+      image: getAssetPath('/images/products/IV Infusion Sets.jpg'),
       featured: false,
     },
     {
@@ -249,7 +249,7 @@ const siteConfig = {
       shortDescription: 'Gauze swabs and wound dressings',
       moq: 'By quotation',
       packaging: 'Medical packs / cartons',
-      image: getAssetPath('/images/products/pharma.jpg'),
+      image: getAssetPath('/images/products/Sterile Gauze Swabs & Bandages.jpg'),
       featured: true,
     },
     {
@@ -261,7 +261,7 @@ const siteConfig = {
       shortDescription: 'Catheters and urine drainage bags',
       moq: 'By quotation',
       packaging: 'Individual packs / cartons',
-      image: getAssetPath('/images/products/pharma.jpg'),
+      image: getAssetPath('/images/products/Urinary Catheters & Drainage Bags.jpg'),
       featured: false,
     },
     {
@@ -273,7 +273,7 @@ const siteConfig = {
       shortDescription: 'Surgical sutures in buyer-specified formats',
       moq: 'By quotation',
       packaging: 'Sterile packs / cartons',
-      image: getAssetPath('/images/products/pharma.jpg'),
+      image: getAssetPath('/images/products/Surgical Sutures.jpg'),
       featured: false,
     },
   ],

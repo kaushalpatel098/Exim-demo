@@ -29,8 +29,8 @@ export default function ProductsPage() {
         <div className="site-container">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 xl:gap-6">
             {products.map((p, i) => (
-              <FadeIn key={p.name} delay={i * 0.05}>
-                <ProductCard {...p} />
+              <FadeIn key={p.name} delay={i * 0.05} className="h-full">
+                <ProductCard name={p.name} image={p.image} />
               </FadeIn>
             ))}
           </div>

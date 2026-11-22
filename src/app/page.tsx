@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import FadeIn from '@/components/FadeIn';
+import ProductCard from '@/components/ProductCard';
 import SectionHeader from '@/components/SectionHeader';
 import { ChevronDown, Shield, Award, CheckCircle, FileText, Package, Truck, MessageSquare, ArrowRight, Clock } from 'lucide-react';
 import siteConfig from '@site-config';
@@ -14,13 +15,7 @@ export const metadata: Metadata = {
 const statIcons = [Package, Clock];
 const stats = siteConfig.stats.map((stat, index) => ({ ...stat, icon: statIcons[index] }));
 
-const products = siteConfig.products
-  .filter((product) => product.featured)
-  .map((product) => ({
-    name: product.shortName,
-    desc: product.shortDescription,
-    image: product.image,
-  }));
+const products = siteConfig.products.filter((product) => product.featured);
 
 const process = [
   { step: '01', title: 'Share Requirements', desc: 'Tell us what products you need, quantities, and target market.', icon: MessageSquare },
@@ -117,23 +112,12 @@ export default function Home() {
             subheadline="Explore medicines and medical supplies sourced from India to buyer specifications and destination-market requirements."
           />
           <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5 xl:gap-6">
+            {/* Previous homepage product tiles, retained as requested:
+                image background with a gradient overlay, product title, and descriptive subtitle.
+            */}
             {products.map((p, i) => (
-              <FadeIn key={p.name} delay={i * 0.07}>
-                <Link href="/products" className="group relative h-56 md:h-72 rounded-2xl overflow-hidden block">
-                  <Image
-                    src={p.image}
-                    alt={p.name}
-                    fill
-                    sizes="(min-width: 768px) 33vw, 50vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                    unoptimized
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-brand-950/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
-                    <h3 className="font-display font-bold text-white text-lg md:text-xl">{p.name}</h3>
-                    <p className="text-brand-300 text-sm mt-1">{p.desc}</p>
-                  </div>
-                </Link>
+              <FadeIn key={p.name} delay={i * 0.07} className="h-full">
+                <ProductCard name={p.name} image={p.image} />
               </FadeIn>
             ))}
           </div>

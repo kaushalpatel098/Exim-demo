@@ -15,12 +15,12 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus('sending');
     setErrorMessage('');
-    const website = (e.currentTarget.elements.namedItem('website') as HTMLInputElement)?.value ?? '';
+    const contactCheck = (e.currentTarget.elements.namedItem('_contact_check') as HTMLInputElement)?.value ?? '';
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...form, website }),
+        body: JSON.stringify({ ...form, _contact_check: contactCheck }),
       });
       const data = await res.json().catch(() => null);
       if (res.ok && data?.success) {
@@ -39,28 +39,41 @@ export default function ContactForm() {
   const inputClass = 'w-full px-4 py-3.5 rounded-xl border border-brand-200 bg-white focus:ring-2 focus:ring-accent-500/20 focus:border-accent-500 outline-none transition-all duration-200 text-sm text-brand-800 placeholder:text-brand-400';
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4" aria-busy={status === 'sending'}>
       <div className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
-        <label htmlFor="contact-website">Leave this field empty</label>
-        <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+        <label htmlFor="contact-check">Leave this field empty</label>
+        <input id="contact-check" name="_contact_check" type="text" tabIndex={-1} autoComplete="off" />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input required placeholder="Full Name *" className={inputClass} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
-        <input required type="email" placeholder="Email Address *" className={inputClass} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
-        <input placeholder="Company Name" className={inputClass} value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} />
-        <select className={inputClass} value={form.country} onChange={(e) => setForm({ ...form, country: e.target.value })}>
-          <option value="">Select Country</option>
-          {countries.map((c) => <option key={c} value={c}>{c}</option>)}
-        </select>
+        <div>
+          <label htmlFor="contact-name" className="sr-only">Full name (required)</label>
+          <input id="contact-name" name="name" autoComplete="name" required maxLength={120} placeholder="Full Name *" className={inputClass} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+        </div>
+        <div>
+          <label htmlFor="contact-email" className="sr-only">Email address (required)</label>
+          <input id="contact-email" name="email" autoComplete="email" required maxLength={254} type="email" placeholder="Email Address *" className={inputClass} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+        </div>
+        <div>
+          <label htmlFor="contact-company" className="sr-only">Company name</label>
+          <input id="contact-company" name="company" autoComplete="organization" maxLength={160} placeholder="Company Name" className={inputClass} value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} />
+        </div>
+        <div>
+          <label htmlFor="contact-country" className="sr-only">Country</label>
+          <select id="contact-country" name="country" autoComplete="country-name" className={inputClass} value={form.country} onChange={(e) => setForm({ ...form, country: e.target.value })}>
+            <option value="">Select Country</option>
+            {countries.map((c) => <option key={c} value={c}>{c}</option>)}
+          </select>
+        </div>
       </div>
-      <select className={inputClass} value={form.product} onChange={(e) => setForm({ ...form, product: e.target.value })}>
+      <label htmlFor="contact-product" className="sr-only">Product of interest</label>
+      <select id="contact-product" name="product" className={inputClass} value={form.product} onChange={(e) => setForm({ ...form, product: e.target.value })}>
         <option value="">Product of Interest</option>
         {products.map((p) => <option key={p} value={p}>{p}</option>)}
       </select>
-      <textarea rows={4} placeholder="Tell us about your requirements — products, quantities, destination, and preferred terms..." className={inputClass} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
+      <textarea id="contact-message" name="message" aria-label="Message" maxLength={3000} rows={4} placeholder="Tell us about your requirements — products, quantities, destination, and preferred terms..." className={inputClass} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
 
       {status === 'sent' ? (
-        <div className="flex items-center gap-3 bg-accent-50 text-accent-800 p-4 rounded-xl border border-accent-200">
+        <div role="status" aria-live="polite" className="flex items-center gap-3 bg-accent-50 text-accent-800 p-4 rounded-xl border border-accent-200">
           <CheckCircle className="w-5 h-5 flex-shrink-0 text-accent-600" />
           <div>
             <span className="text-sm font-medium block">Inquiry sent successfully!</span>

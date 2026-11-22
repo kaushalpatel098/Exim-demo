@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Next.js 14 App Router marketing site deployed as a server-rendered Next.js application. Content-driven, with a Resend-backed contact API route.
+Next.js 14 App Router marketing site deployed to Vercel as a server-rendered Next.js application. Content-driven, with a Resend-backed contact API route. This project is not a static export.
 
 ## Commands
 
@@ -11,7 +11,7 @@ Next.js 14 App Router marketing site deployed as a server-rendered Next.js appli
 - Never run `npm run build` while `npm run dev` is running. Both write `.next/`, and the build clobbers the dev server's stylesheet (pages then load with no CSS). If that happens: stop dev, `rm -rf .next`, restart dev.
 - No ESLint config and no test suite. Don't run `next lint` (it would scaffold ESLint).
 - CI runs `npm ci && npm run build` (`.github/workflows/ci.yml`, Node from `.nvmrc`)
-- Deploy: GitHub Pages from the `static-demo` branch for static pages. A server host is required for the Resend API route.
+- Deploy: Vercel with the standard Next.js build. Keep the contact API route on the Node.js runtime.
 
 ## Content lives in `site.config.ts`
 
@@ -23,8 +23,8 @@ Page-specific copy remains in `src/app/*/page.tsx`: process steps, benefits, tra
 
 - `next.config.js` uses the standard Next.js server output and `images.unoptimized: true`.
 - `src/app/api/contact/route.ts` sends validated contact submissions through Resend. Keep `RESEND_API_KEY`, `NOTIFY_EMAIL`, and `FROM_EMAIL` server-only; never prefix secrets with `NEXT_PUBLIC_`.
-- GitHub Actions sets `GITHUB_PAGES=true` and exports static files to `out/`. GitHub Pages cannot run `src/app/api/contact/route.ts`, so Resend form delivery requires a separately hosted API.
-- The contact form includes a honeypot and origin check. Configure hosting-level rate limiting or bot protection before exposing it to high-volume traffic.
+- Do not set `GITHUB_PAGES` or `NEXT_PUBLIC_BASE_PATH`; the app no longer supports a static export.
+- The contact form includes a honeypot, required same-origin check, JSON-only parsing, and bounded request/field sizes. Publish a Vercel Firewall rule for `POST /api/contact` limiting to 5 requests per 60 seconds per IP, and enable available bot protections before production traffic.
 - `next/image` needs `unoptimized` (repo passes it everywhere) and assets under `public/images/`.
 - Client components must keep `'use client'`: `FadeIn`, `PageHero`, `Navbar`, `ContactForm`, `WhatsAppButton`, `Footer` is server-side. Pages stay server components.
 
@@ -32,7 +32,7 @@ Page-specific copy remains in `src/app/*/page.tsx`: process steps, benefits, tra
 
 - `src/app/sitemap.ts` and `src/app/robots.ts` generate `/sitemap.xml` and `/robots.txt` from config. Do not add these files under `public/`.
 - Add `alternates: { canonical: '/path' }` to each page's `metadata`.
-- `public/_headers` is not applied by Vercel; configure production response headers in Vercel or `next.config.js` if needed.
+- Production security headers are configured in `next.config.js`; CSP with per-request nonces is configured in `middleware.ts`.
 - `src/app/privacy/page.tsx` is linked from the footer and included in the sitemap.
 
 ## Content safety

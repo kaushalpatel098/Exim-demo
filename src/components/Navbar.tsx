@@ -53,6 +53,7 @@ export default function Navbar() {
               <Link
                 key={l.href}
                 href={l.href}
+                aria-current={isActive ? 'page' : undefined}
                 className={`relative px-4 py-2 text-[13px] font-medium rounded-lg transition-all duration-300 ${
                   isTransparent
                     ? isActive
@@ -81,18 +82,20 @@ export default function Navbar() {
         </div>
 
         <button
+          type="button"
           onClick={() => setOpen(!open)}
           className={`md:hidden p-2.5 rounded-xl transition-colors ${
             isTransparent ? 'text-white hover:bg-white/10' : 'text-brand-700 hover:bg-brand-50'
           }`}
-          aria-label="Toggle menu"
+          aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={open}
         >
-          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {open ? <X aria-hidden="true" className="w-5 h-5" /> : <Menu aria-hidden="true" className="w-5 h-5" />}
         </button>
       </nav>
 
       {open && (
-        <div className="md:hidden overflow-hidden bg-white/95 backdrop-blur-2xl border-t border-brand-100 animate-slideDown">
+        <div id="mobile-navigation" className="md:hidden overflow-hidden bg-white/95 backdrop-blur-2xl border-t border-brand-100 animate-slideDown">
           <div className="px-5 py-4 space-y-1">
             {links.map((l) => {
               const isActive = pathname === l.href;
@@ -101,6 +104,7 @@ export default function Navbar() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
+                  aria-current={isActive ? 'page' : undefined}
                   className={`block py-2.5 px-4 rounded-xl text-sm font-medium transition-colors ${
                     isActive
                       ? 'text-accent-700 bg-accent-50'

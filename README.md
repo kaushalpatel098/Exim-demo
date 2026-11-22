@@ -80,17 +80,24 @@ Images are in `public/images/`:
 2. Update `src/app/layout.tsx` metadata only if you need fields not covered by the config
 3. `sitemap.xml` and `robots.txt` are generated from `src/app/sitemap.ts` and `src/app/robots.ts` — do not add them to `public/`
 
-## Deploy to GitHub Pages
+## Deploy to Vercel
 
-The `static-demo` branch deploys through `.github/workflows/deploy.yml`. In the repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**. The workflow exports to `out/` with the `/Exim-demo` base path.
+Import this repository into Vercel with the Next.js preset and the project root as the Root Directory. Keep the standard Next.js build and output settings; this app uses server rendering and a Node.js API route and does not produce a static export. Connect the production domain in Vercel after the first deployment.
 
-GitHub Pages serves only static files and cannot run the Resend API route. The site pages deploy there, but contact-form delivery requires a separately hosted API endpoint. To run the form with the current Resend route, deploy the application to Vercel and set `RESEND_API_KEY`, `NOTIFY_EMAIL`, and `FROM_EMAIL` in the Vercel project's Environment Variables. `FROM_EMAIL` must use a domain verified in Resend.
+Add these server-only variables in **Project Settings -> Environment Variables** for Production and Preview as needed:
+
+- `RESEND_API_KEY`: a Resend sending key with access to the verified sending domain
+- `NOTIFY_EMAIL`: the inbox that receives contact inquiries
+- `FROM_EMAIL`: a sender address on the verified Resend domain, for example `Prithvi International Exim LLP <website@send.example.com>`
+
+Never prefix these values with `NEXT_PUBLIC_`. Redeploy after adding or changing variables.
+
+Before exposing the contact form publicly, open **Vercel Project -> Firewall** and publish a rate-limit rule for `POST /api/contact`: 5 requests per 60 seconds per IP, returning HTTP 429. Also enable Vercel's available bot protections for the project. The API has request size limits, same-origin checks, validation, escaping, and a honeypot; edge rate limiting is the layer that prevents automated traffic from exhausting Resend or function usage.
 
 For local development, copy `.env.example` to `.env.local`, replace the placeholders, then run `npm run dev`. The Resend API key is read only by the server route and must never use a `NEXT_PUBLIC_` prefix.
-
 ## Contact Form
 
-The contact form posts to `/api/contact`. The server validates and bounds submitted values, checks the product and country against configured options, escapes email HTML, and sends through Resend. The browser never receives the Resend API key. The form also includes an origin check, request size limit, and honeypot field; configure rate limiting or bot protection at the hosting layer before exposing the endpoint to high-volume traffic.
+The contact form posts to `/api/contact`. The server validates and bounds submitted values, checks the product and country against configured options, escapes email HTML, and sends through Resend. The browser never receives the Resend API key. The form also includes a required same-origin check, JSON-only request handling, a request size limit, and a honeypot field. Vercel Firewall rate limiting and bot protections must be published as described above.
 
 ## Tech Stack
 
@@ -99,7 +106,7 @@ The contact form posts to `/api/contact`. The server validates and bounds submit
 - **Animations:** Framer Motion
 - **Icons:** Lucide React
 - **Fonts:** Inter + Playfair Display (Google Fonts)
-- **Contact Form:** Resend server API
+- **Contact Form:** Resend server API on Vercel Node.js functions
 - **Language:** TypeScript
 
 ## Project Structure
@@ -107,7 +114,6 @@ The contact form posts to `/api/contact`. The server validates and bounds submit
 ```
 ├── public/
 │   ├── images/          # All site images
-│   ├── _headers         # Legacy static-host headers; Vercel uses its own headers config
 │   └── ...              # Icons, logo, manifest, social image
 ├── src/
 │   ├── app/
